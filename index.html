@@ -81,7 +81,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 <body>
 <div class="wrap">
 <header><h1>Materialräknaren</h1><small>Ståhle Digital · Verkstad</small></header>
-<p class="disc"><b>En bra uppskattning – ingen bibel.</b> Förvalen är ett snitt av de stora leverantörernas anvisningar (Gyproc, Benders, BMI, Weber, Finja, Isover, Paroc, Svenskt Trä m.fl.). Kontrollera alltid mot etiketten eller monteringsanvisningen innan du beställer.</p>
+<p class="disc"><b>En bra uppskattning – ingen bibel.</b> Förvalen är ett snitt av de stora leverantörernas anvisningar (Gyproc, Benders, BMI, Weber, Finja, Isover, Paroc, Svenskt Trä m.fl.). Kontrollera alltid mot etiketten eller monteringsanvisningen innan du beställer. Överst i varje resultat står den yta eller volym räkningen bygger på – stämmer den inte med vad kunden sagt, stämmer inte resten heller.</p>
 
 <nav role="tablist" id="tabs">
   <button role="tab" aria-selected="true" data-t="gips">Gipsvägg</button>
@@ -375,7 +375,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       const A=L*H, gipsL=sel('g_a',0)+sel('g_b',0), osbL=sel('g_a',1)+sel('g_b',1);
       const gipsArea=A*gipsL, osbArea=A*osbL;
       const reglar=Math.floor(L/cc)+1, regelM=reglar*H+2*L;
-      const out=[];
+      const out=[row('Väggyta',Math.round(A*10)/10,'m²',`${fmt(L)} × ${fmt(H)} m, en sida`)];
       if(gipsL)out.push(row('Gipsskivor',Math.ceil(gipsArea/sk*sp),'st',`${gipsL} lager totalt, ${fmt(Math.round(gipsArea*10)/10)} m² + spill`));
       if(osbL)out.push(row('OSB / plywood',Math.ceil(osbArea/osk*sp),'st',`${osbL} lager, ${fmt(Math.round(osbArea*10)/10)} m² + spill`));
       out.push(row('Reglar stående',reglar,'st',`c/c ${num('g_cc')}`),row('Regel totalt',Math.ceil(regelM*1.05),'lpm','inkl. syll och hammarband'));
@@ -386,7 +386,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     tak(){
       const A=num('t_yta'),N=num('t_nock'),bar=num('t_bar')/1000,stro=num('t_stro')/1000,pm2=num('t_pm2'),npm=num('t_npm'),lakt=num('t_lakt'),sp=1+num('t_spill')/100;
       const barM=A/bar*sp, stroM=A/stro*sp;
-      const out=[row('Takpannor',Math.ceil(A*pm2*sp),'st',`${fmt(pm2)} st/m² + spill`),row('Nockpannor',Math.ceil(N*npm*sp),'st',`${fmt(npm)} st per meter`),row('Bärläkt',Math.ceil(barM),'lpm',`${Math.ceil(barM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_bar')}`),row('Ströläkt',Math.ceil(stroM),'lpm',`${Math.ceil(stroM/lakt)} st à ${fmt(lakt)} m`),row('Nockbräda',Math.ceil(N*1.05),'lpm','')];
+      const out=[row('Takyta',A,'m²','båda takfallen'),row('Takpannor',Math.ceil(A*pm2*sp),'st',`${fmt(pm2)} st/m² + spill`),row('Nockpannor',Math.ceil(N*npm*sp),'st',`${fmt(npm)} st per meter`),row('Bärläkt',Math.ceil(barM),'lpm',`${Math.ceil(barM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_bar')}`),row('Ströläkt',Math.ceil(stroM),'lpm',`${Math.ceil(stroM/lakt)} st à ${fmt(lakt)} m`),row('Nockbräda',Math.ceil(N*1.05),'lpm','')];
       const lucka=num('t_lucka');
       if(lucka)out.push(row('Råspontsluckor',Math.ceil(A*1.05/lucka),'st',`à ${fmt(lucka)} m², 5 % spill`));
       let pb=sel('t_papp',0),pl=sel('t_papp',1);
@@ -401,7 +401,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       const A=num('p_yta'),b=sel('p_typ',0),l=sel('p_typ',1),nb=num('p_nb'),nl=num('p_nl'),lcc=num('p_lakt')/1000,vind=num('p_vind'),sp=1+num('p_spill')/100,st=$('p_rikt').value==='s';
       const kors=1/lcc; // korsningar per löpmeter bräda
       const spikM2=b*kors*nb+l*kors*nl;
-      const out=[row(l?'Bottenbräda':'Panelbräda',Math.ceil(A*b*sp),'lpm',`${fmt(b)} lpm/m² + spill`)];
+      const out=[row('Fasadyta',A,'m²','netto, öppningar avdragna'),row(l?'Bottenbräda':'Panelbräda',Math.ceil(A*b*sp),'lpm',`${fmt(b)} lpm/m² + spill`)];
       if(l)out.push(row('Lockläkt / lockbräda',Math.ceil(A*l*sp),'lpm',`${fmt(l)} lpm/m² + spill`));
       out.push(row(st?'Spikläkt (liggande)':'Reglar / läkt (stående)',Math.ceil(A/lcc*1.05),'lpm',`c/c ${num('p_lakt')}`));
       out.push(row('Spik',up(A*spikM2*1.05,100),'st',`${Math.round(spikM2)} st/m² vid c/c ${num('p_lakt')}, ${st?'stående':'liggande'} panel`));
@@ -417,12 +417,12 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     betong(){
       const n=num('b_n'),d=num('b_d')/1000,h=num('b_dj')/1000,sack=num('b_sack');
       const vol=n*Math.PI*(d/2)**2*h*1000*1.1;
-      return [row('Betong',Math.ceil(vol),'l',`${n} × Ø${num('b_d')} × ${num('b_dj')} mm`),row('Torrbetong 25 kg',Math.ceil(vol/sack),'säckar',`${fmt(sack)} l per säck`)];
+      return [row('Volym',Math.round(vol/1.1)/1000,'m³',`${n} × Ø${num('b_d')} × ${num('b_dj')} mm`),row('Betong att köpa',Math.ceil(vol),'l','inkl. 10 % extra'),row('Torrbetong 25 kg',Math.ceil(vol/sack),'säckar',`${fmt(sack)} l per säck`)];
     },
     platta(){
       const A=num('pl_yta'),t=num('pl_t')/1000,cell=num('pl_cell'),nat=num('pl_nat'),sp=1+num('pl_spill')/100,sack=num('pl_sack');
       const m3=A*t*sp;
-      const out=[row('Betong',Math.round(m3*10)/10,'m³',`${num('pl_t')} mm + ${num('pl_spill')} % spill`),row('…eller torrbetong 25 kg',Math.ceil(m3*sack),'säckar',`${sack} säckar/m³`)];
+      const out=[row('Platta',A,'m²',`${num('pl_t')} mm tjock = ${fmt(Math.round(A*t*100)/100)} m³ netto`),row('Betong att beställa',Math.round(m3*10)/10,'m³',`+ ${num('pl_spill')} % spill`),row('…eller torrbetong 25 kg',Math.ceil(m3*sack),'säckar',`${sack} säckar/m³`)];
       if(nat)out.push(row('Armeringsnät',Math.ceil(A/nat),'st','5,0 × 2,3 m, överlapp inräknat'));
       if(cell)out.push(row('Cellplast 100 mm',Math.ceil(A*cell*1.05/0.72),'skivor',`${Math.ceil(A*cell*1.05/3.6)} paket à 3,6 m², ${cell} lager`));
       return out;
@@ -430,19 +430,19 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     fyll(){
       const A=num('fy_yta'),t=num('fy_t')/1000,dens=sel('fy_mat',0),bagM3=sel('fy_mat',2),pack=1+num('fy_pack')/100,bag=num('fy_bag');
       const m3=A*t*pack, ton=m3*dens;
-      return [row('Volym att beställa',Math.round(m3*10)/10,'m³',`${num('fy_t')} mm packat + ${num('fy_pack')} %`),row('Vikt',Math.round(ton*10)/10,'ton',`${fmt(dens)} t/m³`),row('Storsäck',Math.ceil(ton*1000/bag),'st',`à ${bag} kg ≈ ${fmt(bagM3)} m³`)];
+      return [row('Yta',A,'m²',`${num('fy_t')} mm packat = ${fmt(Math.round(A*t*100)/100)} m³ netto`),row('Volym att beställa',Math.round(m3*10)/10,'m³',`+ ${num('fy_pack')} % packning/svinn`),row('Vikt',Math.round(ton*10)/10,'ton',`${fmt(dens)} t/m³`),row('Storsäck',Math.ceil(ton*1000/bag),'st',`à ${bag} kg ≈ ${fmt(bagM3)} m³`)];
     },
     trall(){
       const L=num('tr_l'),B=num('tr_b'),bb=num('tr_bb')/1000,spalt=num('tr_sp')/1000,cc=num('tr_cc')/1000,sp=1+num('tr_spill')/100;
       const rader=Math.ceil(B/(bb+spalt)), lpm=rader*L*sp;
       const reglar=Math.floor(L/cc)+1, regelM=reglar*B;
-      return [row('Trall',Math.ceil(lpm),'lpm',`${rader} rader à ${fmt(L)} m + spill`),row('Reglar',reglar,'st',`${Math.ceil(regelM)} lpm, c/c ${num('tr_cc')}`),row('Trallskruv',up(rader*reglar*2*sp,100),'st','avrundat till 100')];
+      return [row('Däckyta',Math.round(L*B*10)/10,'m²',`${fmt(L)} × ${fmt(B)} m`),row('Trall',Math.ceil(lpm),'lpm',`${rader} rader à ${fmt(L)} m + spill`),row('Reglar',reglar,'st',`${Math.ceil(regelM)} lpm, c/c ${num('tr_cc')}`),row('Trallskruv',up(rader*reglar*2*sp,100),'st','avrundat till 100')];
     },
     iso(){
       const A=num('i_yta'),t=sel('i_t',0)/1000,pak=num('i_pak'),sp=1+num('i_spill')/100;
       const VA=num('lu_yta'),VT=Math.max(0,num('lu_t')-num('lu_bef'))/1000,dens=num('lu_dens');
       const vm3=VA*VT;
-      return [hd('Skivor'),row('Isolering',Math.round(A*sp*10)/10,'m²',`${sel('i_t',0)} mm, inkl. spill`),row('Paket',Math.ceil(A*sp/pak),'st',`à ${fmt(pak)} m²`),
+      return [hd('Skivor'),row('Yta att isolera',A,'m²',`${sel('i_t',0)} mm = ${fmt(Math.round(A*t*100)/100)} m³`),row('Isolering att köpa',Math.round(A*sp*10)/10,'m²','inkl. spill'),row('Paket',Math.ceil(A*sp/pak),'st',`à ${fmt(pak)} m²`),
               hd('Lösull'),row('Volym',Math.round(vm3*10)/10,'m³',`${VA} m² × ${Math.round(VT*1000)} mm nytt lager`),row('Färdigblåst vikt',Math.round(vm3*dens),'kg',`${dens} kg/m³`)];
     }
   };

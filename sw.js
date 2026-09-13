@@ -1,6 +1,6 @@
 /* Materialräknaren – service worker. Cache-first för appens egna filer,
    nätverk-först för själva sidan så nya versioner når fram när man är online. */
-const VERSION = "mr-v1";
+const VERSION = "mr-v2";
 const SHELL = [
   "/",
   "/index.html",

@@ -1,0 +1,17 @@
+{
+  "name": "Materialräknaren – Ståhle Digital",
+  "short_name": "Räknaren",
+  "description": "Snabbkalkylatorer för gips, tak, panel, färg, betong, fyllnad, trall och isolering.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "sv",
+  "background_color": "#f6f5f1",
+  "theme_color": "#f0643b",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

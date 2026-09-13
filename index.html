@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f0643b">
 <title>Materialräknaren – Ståhle Digital</title>
-<meta name="description" content="Snabbkalkylatorer för gipsvägg, tak och läkt, ytterpanel, färg, plintar, betongplatta, fyllnadsmassor, trall och isolering. En bra uppskattning, byggd av Ståhle Digital i Växjö.">
+<meta name="description" content="Snabbkalkylatorer för gipsvägg, tak och läkt, papp och duk, ytterpanel, färg, plintar, betongplatta, fyllnadsmassor, trall och isolering. En bra uppskattning, byggd av Ståhle Digital i Växjö.">
 <link rel="canonical" href="https://raknaren.stahledigital.se/">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/icon-192.png" type="image/png">
@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Räknaren">
 <meta property="og:title" content="Materialräknaren – Ståhle Digital">
-<meta property="og:description" content="Räkna material för gips, tak, panel, färg, betong, fyllnad, trall och isolering – direkt i mobilen.">
+<meta property="og:description" content="Räkna material för gips, tak, papp, panel, färg, betong, fyllnad, trall och isolering – direkt i mobilen.">
 <meta property="og:url" content="https://raknaren.stahledigital.se/">
 <meta property="og:image" content="https://stahledigital.se/og.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
@@ -80,12 +80,13 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </head>
 <body>
 <div class="wrap">
-<header><h1>Materialräknaren</h1><small>Ståhle Digital · Verkstad</small></header>
+<header><h1>Materialräknaren</h1><small>Ståhle Digital · Verkstaden</small></header>
 <p class="disc"><b>En bra uppskattning – ingen bibel.</b> Förvalen är ett snitt av de stora leverantörernas anvisningar (Gyproc, Benders, BMI, Weber, Finja, Isover, Paroc, Svenskt Trä m.fl.). Kontrollera alltid mot etiketten eller monteringsanvisningen innan du beställer. Överst i varje resultat står den yta eller volym räkningen bygger på – stämmer den inte med vad kunden sagt, stämmer inte resten heller.</p>
 
 <nav role="tablist" id="tabs">
   <button role="tab" aria-selected="true" data-t="gips">Gipsvägg</button>
   <button role="tab" data-t="tak">Tak &amp; läkt</button>
+  <button role="tab" data-t="papp">Papp &amp; duk</button>
   <button role="tab" data-t="panel">Ytterpanel</button>
   <button role="tab" data-t="farg">Färg</button>
   <button role="tab" data-t="betong">Plintar</button>
@@ -130,7 +131,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 <section id="tak">
 <div class="calc">
   <h2>Tak &amp; läkt</h2>
-  <p class="lead">Bärläkt, ströläkt, pannor och nock. Välj panntyp så sätts läktavstånd och nock automatiskt.</p>
+  <p class="lead">Bärläkt, ströläkt, pannor, nock och råspont. Välj panntyp så sätts läktavstånd och nock automatiskt. Papp och duk räknas under <b>Papp &amp; duk</b>.</p>
   <div class="grid">
     <div class="f full"><label for="t_typ">Panntyp</label><div class="in"><select id="t_typ">
       <option value="9|375|2.8" selected>2-kupig betong (Palema, Jönåker) – 9 st/m²</option>
@@ -141,9 +142,6 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     </select></div></div>
     <div class="f"><label for="t_yta">Takyta (båda fallen)</label><div class="in"><input id="t_yta" type="number" step="1" value="140"><span>m²</span></div></div>
     <div class="f"><label for="t_nock">Nocklängd</label><div class="in"><input id="t_nock" type="number" step="0.1" value="11"><span>m</span></div></div>
-    <div class="f"><label for="t_papp">Underlagspapp</label><div class="in"><select id="t_papp">
-      <option value="1|20" selected>Rulle 1 × 20 m</option><option value="1|15">Rulle 1 × 15 m</option><option value="1|10">Rulle 1 × 10 m</option><option value="0|0">Egen storlek</option><option value="-1|0">Ingen</option>
-    </select></div></div>
     <div class="f"><label for="t_lucka">Råspontsluckor</label><div class="in"><select id="t_lucka">
       <option value="1.94" selected>540 × 3600</option><option value="2.27">540 × 4200</option><option value="0">Inga</option>
     </select></div></div>
@@ -154,15 +152,47 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="t_npm">Nockpannor per meter</label><div class="in"><input id="t_npm" type="number" step="0.1" value="2.8"><span>st</span></div></div>
     <div class="f"><label for="t_bar">Bärläkt avstånd</label><div class="in"><input id="t_bar" type="number" step="5" value="375"><span>mm</span></div></div>
     <div class="f"><label for="t_stro">Ströläkt c/c</label><div class="in"><input id="t_stro" type="number" step="50" value="600"><span>mm</span></div></div>
-    <div class="f"><label for="t_pb">Papp bredd (egen)</label><div class="in"><input id="t_pb" type="number" step="0.1" value="1"><span>m</span></div></div>
-    <div class="f"><label for="t_pl">Papp längd (egen)</label><div class="in"><input id="t_pl" type="number" step="1" value="20"><span>m</span></div></div>
-    <div class="f"><label for="t_ov">Överlapp papp, sida</label><div class="in"><input id="t_ov" type="number" step="10" value="100"><span>mm</span></div></div>
+    <div class="f"><label for="t_pall">Pannor per pall</label><div class="in"><input id="t_pall" type="number" step="10" value="240"><span>st</span></div></div>
     <div class="f"><label for="t_lakt">Läktlängd (kap)</label><div class="in"><input id="t_lakt" type="number" step="0.1" value="4.8"><span>m</span></div></div>
     <div class="f"><label for="t_spill">Spill</label><div class="in"><input id="t_spill" type="number" value="5"><span>%</span></div></div>
   </div></details>
   <div class="res"><h3>Att hämta</h3><div class="rows" id="t_out"></div>
     <div class="actions"><button class="act" data-copy="t_out">Kopiera listan</button><button class="act ghost" data-share="t_out">Dela</button></div>
-    <p class="note">Läktavstånd sätts vid max bygglängd – brantare/flackare tak kan kräva tätare läkt (Benders: 310–375 mm beroende på lutning). Läkt 25×48 enligt nyare anvisningar.</p>
+    <p class="note">Pall = 240 pannor, halvpall 120 (vanligt för betongpannor – ändra under Förval om fabrikatet packar annorlunda). Läktavstånd sätts vid max bygglängd – brantare/flackare tak kan kräva tätare läkt (Benders: 310–375 mm beroende på lutning). Läkt 25×48 enligt nyare anvisningar.</p>
+  </div>
+</div>
+</section>
+
+<!-- PAPP & DUK -->
+<section id="papp">
+<div class="calc">
+  <h2>Papp &amp; duk</h2>
+  <p class="lead">Underlagspapp, underlagsduk eller ytpapp – rullar med överlappet inräknat. Allt som överlappar i montaget räknas alltid med överlapp.</p>
+  <div class="grid">
+    <div class="f full"><label for="pp_typ">Produkt</label><div class="in"><select id="pp_typ">
+      <option value="1|8|100|150|u" selected>Underlagspapp (YAP 2200) – rulle 1 × 8 m</option>
+      <option value="1|15|100|150|u">Underlagspapp (YEP 2500) – rulle 1 × 15 m</option>
+      <option value="1|20|100|150|u">Underlagspapp – rulle 1 × 20 m</option>
+      <option value="1.5|50|150|150|d">Underlagsduk, diffusionsöppen – rulle 1,5 × 50 m</option>
+      <option value="1|7.5|80|150|y">Ytpapp / svetsbar (brännpapp) – rulle 1 × 7,5 m</option>
+      <option value="1|10|80|150|y">Ytpapp / svetsbar (brännpapp) – rulle 1 × 10 m</option>
+      <option value="0|0|100|150|u">Egen storlek</option>
+    </select></div></div>
+    <div class="f"><label for="pp_yta">Takyta</label><div class="in"><input id="pp_yta" type="number" step="1" value="140"><span>m²</span></div></div>
+    <div class="f"><label for="pp_spill">Spill</label><div class="in"><input id="pp_spill" type="number" value="5"><span>%</span></div></div>
+  </div>
+  <details><summary>Förval</summary>
+  <div class="grid">
+    <div class="f"><label for="pp_b">Rullbredd</label><div class="in"><input id="pp_b" type="number" step="0.1" value="1"><span>m</span></div></div>
+    <div class="f"><label for="pp_l">Rullängd</label><div class="in"><input id="pp_l" type="number" step="0.5" value="8"><span>m</span></div></div>
+    <div class="f"><label for="pp_os">Överlapp sida</label><div class="in"><input id="pp_os" type="number" step="10" value="100"><span>mm</span></div></div>
+    <div class="f"><label for="pp_oe">Överlapp ände</label><div class="in"><input id="pp_oe" type="number" step="10" value="150"><span>mm</span></div></div>
+    <div class="f"><label for="pp_spik">Pappspik per m²</label><div class="in"><input id="pp_spik" type="number" value="20"><span>st</span></div></div>
+    <div class="f"><label for="pp_prim">Primer, svetsbar papp</label><div class="in"><input id="pp_prim" type="number" step="0.05" value="0.3"><span>l/m²</span></div></div>
+  </div></details>
+  <div class="res"><h3>Att hämta</h3><div class="rows" id="pp_out"></div>
+    <div class="actions"><button class="act" data-copy="pp_out">Kopiera listan</button><button class="act ghost" data-share="pp_out">Dela</button></div>
+    <p class="note">Netto per rulle = (bredd − sidöverlapp) × (längd − ändöverlapp). Rullformat och överlapp varierar per fabrikat – kontrollera mot förpackningen. Spik- och primeråtgång är riktvärden.</p>
   </div>
 </div>
 </section>
@@ -386,15 +416,19 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     tak(){
       const A=num('t_yta'),N=num('t_nock'),bar=num('t_bar')/1000,stro=num('t_stro')/1000,pm2=num('t_pm2'),npm=num('t_npm'),lakt=num('t_lakt'),sp=1+num('t_spill')/100;
       const barM=A/bar*sp, stroM=A/stro*sp;
-      const out=[row('Takyta',A,'m²','båda takfallen'),row('Takpannor',Math.ceil(A*pm2*sp),'st',`${fmt(pm2)} st/m² + spill`),row('Nockpannor',Math.ceil(N*npm*sp),'st',`${fmt(npm)} st per meter`),row('Bärläkt',Math.ceil(barM),'lpm',`${Math.ceil(barM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_bar')}`),row('Ströläkt',Math.ceil(stroM),'lpm',`${Math.ceil(stroM/lakt)} st à ${fmt(lakt)} m`),row('Nockbräda',Math.ceil(N*1.05),'lpm','')];
+      const pannor=Math.ceil(A*pm2*sp), pall=num('t_pall'), hel=Math.floor(pannor/pall), rest=pannor-hel*pall, halv=rest>0&&rest<=pall/2?1:0, extra=halv?0:rest;
+      const pallTxt=`${hel} pall`+(halv?' + 1 halvpall':'')+(extra?` + ${extra} lösa`:'')+` (à ${pall} st)`;
+      const out=[row('Takyta',A,'m²','båda takfallen'),row('Takpannor',pannor,'st',`${fmt(pm2)} st/m² + spill`),row('Pallar',hel+(halv?0.5:0),'pall',pallTxt),row('Nockpannor',Math.ceil(N*npm*sp),'st',`${fmt(npm)} st per meter`),row('Bärläkt',Math.ceil(barM),'lpm',`${Math.ceil(barM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_bar')}`),row('Ströläkt',Math.ceil(stroM),'lpm',`${Math.ceil(stroM/lakt)} st à ${fmt(lakt)} m`),row('Nockbräda',Math.ceil(N*1.05),'lpm','')];
       const lucka=num('t_lucka');
       if(lucka)out.push(row('Råspontsluckor',Math.ceil(A*1.05/lucka),'st',`à ${fmt(lucka)} m², 5 % spill`));
-      let pb=sel('t_papp',0),pl=sel('t_papp',1);
-      if(pb===0){pb=num('t_pb');pl=num('t_pl');}
-      if(pb>0&&pl>0){
-        const ov=num('t_ov')/1000, netto=(pb-ov)*(pl-0.15);
-        out.push(row('Underlagspapp',Math.ceil(A*1.05/netto),'rullar',`${fmt(pb)} × ${fmt(pl)} m, ca ${fmt(Math.round(netto*10)/10)} m² netto per rulle`));
-      }
+      return out;
+    },
+    papp(){
+      const A=num('pp_yta'),sp=1+num('pp_spill')/100,b=num('pp_b'),l=num('pp_l'),os=num('pp_os')/1000,oe=num('pp_oe')/1000,kind=$('pp_typ').value.split('|')[4];
+      const netto=Math.max(0.1,(b-os)*(l-oe)), brutto=A*sp;
+      const out=[row('Takyta',A,'m²','att täcka'),row('Rullar',Math.ceil(brutto/netto),'st',`${fmt(b)} × ${fmt(l)} m, ${fmt(Math.round(netto*10)/10)} m² netto per rulle`),row('Bruttoyta att köpa',Math.ceil(Math.ceil(brutto/netto)*b*l),'m²','inkl. överlapp och spill')];
+      if(kind==='u')out.push(row('Pappspik',up(A*num('pp_spik'),100),'st',`${num('pp_spik')} st/m²`));
+      if(kind==='y')out.push(row('Primer',Math.ceil(A*num('pp_prim')),'l',`${fmt(num('pp_prim'))} l/m² på underlaget`));
       return out;
     },
     panel(){
@@ -446,11 +480,12 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
               hd('Lösull'),row('Volym',Math.round(vm3*10)/10,'m³',`${VA} m² × ${Math.round(VT*1000)} mm nytt lager`),row('Färdigblåst vikt',Math.round(vm3*dens),'kg',`${dens} kg/m³`)];
     }
   };
-  const outs={gips:'g_out',tak:'t_out',panel:'p_out',farg:'f_out',betong:'b_out',platta:'pl_out',fyll:'fy_out',trall:'tr_out',iso:'i_out'};
+  const outs={gips:'g_out',tak:'t_out',papp:'pp_out',panel:'p_out',farg:'f_out',betong:'b_out',platta:'pl_out',fyll:'fy_out',trall:'tr_out',iso:'i_out'};
   function render(){for(const k in calcs){$(outs[k]).innerHTML=calcs[k]().join('');}}
 
   // presets that push values into their fields
   $('t_typ').addEventListener('change',()=>{$('t_pm2').value=sel('t_typ',0);$('t_bar').value=sel('t_typ',1);$('t_npm').value=sel('t_typ',2);});
+  $('pp_typ').addEventListener('change',()=>{const v=$('pp_typ').value.split('|');if(+v[0]>0){$('pp_b').value=v[0];$('pp_l').value=v[1];}$('pp_os').value=v[2];$('pp_oe').value=v[3];});
   $('p_typ').addEventListener('change',()=>{$('p_nb').value=sel('p_typ',2);$('p_nl').value=sel('p_typ',3);});
   $('p_rikt').addEventListener('change',()=>{$('p_lakt_l').textContent=$('p_rikt').value==='s'?'Spikläkt c/c':'Reglar / läkt c/c';});
   $('f_typ').addEventListener('change',()=>{$('f_tack').value=$('f_typ').value;});

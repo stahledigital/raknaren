@@ -161,6 +161,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     </select></div></div>
     <div class="f"><label for="t_yta">Takyta (båda fallen)</label><div class="in"><input id="t_yta" type="number" step="1" value="140"><span>m²</span></div></div>
     <div class="f"><label for="t_nock">Nocklängd</label><div class="in"><input id="t_nock" type="number" step="0.1" value="11"><span>m</span></div></div>
+    <div class="f"><label for="t_spill">Spill</label><div class="in"><select id="t_spill"><option value="5" selected>5 % – enkelt sadeltak</option><option value="10">10 % – vinklar, kupor</option><option value="15">15 % – valmat tak</option><option value="20">20 % – komplext tak</option></select></div></div>
     <div class="f"><label for="t_und">Underlag</label><div class="in"><select id="t_und">
       <option value="rs" selected>Råspont + underlagspapp</option><option value="duk">Underlagsduk på läkt 45×70</option><option value="ing">Räkna inte underlag</option>
     </select></div></div>
@@ -179,11 +180,10 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="t_stro">Ströläkt c/c</label><div class="in"><input id="t_stro" type="number" step="50" value="600"><span>mm</span></div></div>
     <div class="f"><label for="t_pall">Pannor per pall</label><div class="in"><input id="t_pall" type="number" step="10" value="240"><span>st</span></div></div>
     <div class="f"><label for="t_lakt">Läktlängd (kap)</label><div class="in"><input id="t_lakt" type="number" step="0.1" value="4.8"><span>m</span></div></div>
-    <div class="f"><label for="t_spill">Spill</label><div class="in"><input id="t_spill" type="number" value="5"><span>%</span></div></div>
   </div></details>
   <div class="res"><h3>Att hämta</h3><div class="rows" id="t_out"></div>
     <div class="actions"><button class="act" data-copy="t_out">Kopiera listan</button><button class="act ghost" data-share="t_out">Dela</button></div>
-    <p class="note">Pall = 240 pannor, halvpall 120 (vanligt för betongpannor – ändra under Förval om fabrikatet packar annorlunda). Läktavstånd sätts vid max bygglängd – brantare/flackare tak kan kräva tätare läkt (Benders: 310–375 mm beroende på lutning). Läkt 25×48 enligt nyare anvisningar.</p>
+    <p class="note">Spill 5 % räcker på ett enkelt sadeltak; vinklar, kupor och valmar kräver 10–20 % (kapade pannor i ränndalar och mot nock). Pall = 240 pannor, halvpall 120 (vanligt för betongpannor – ändra under Förval om fabrikatet packar annorlunda). Läktavstånd sätts vid max bygglängd – brantare/flackare tak kan kräva tätare läkt (Benders: 310–375 mm beroende på lutning). Läkt 25×48 enligt nyare anvisningar.</p>
   </div>
 </div>
 </section>
@@ -205,7 +205,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       <option value="0|0|100|150|u">Egen storlek</option>
     </select></div></div>
     <div class="f"><label for="pp_yta">Takyta</label><div class="in"><input id="pp_yta" type="number" step="1" value="140"><span>m²</span></div></div>
-    <div class="f"><label for="pp_spill">Spill</label><div class="in"><input id="pp_spill" type="number" value="5"><span>%</span></div></div>
+    <div class="f"><label for="pp_spill">Spill</label><div class="in"><select id="pp_spill"><option value="5" selected>5 % – enkelt sadeltak</option><option value="10">10 % – vinklar, kupor</option><option value="15">15 % – valmat tak</option><option value="20">20 % – komplext tak</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
@@ -218,7 +218,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   </div></details>
   <div class="res"><h3>Att hämta</h3><div class="rows" id="pp_out"></div>
     <div class="actions"><button class="act" data-copy="pp_out">Kopiera listan</button><button class="act ghost" data-share="pp_out">Dela</button></div>
-    <p class="note">Netto per rulle = (bredd − sidöverlapp) × (längd − ändöverlapp). Rullformat och överlapp varierar per fabrikat – kontrollera mot förpackningen. Spik- och primeråtgång är riktvärden.</p>
+    <p class="note">Rullens yta och täckande yta är inte samma sak: täckande = (bredd − sidöverlapp) × (längd − ändöverlapp). Välj spill efter takets form – en takläggare räknar ofta 10–20 % på vinkliga tak. Rullformat och överlapp varierar per fabrikat.</p>
   </div>
 </div>
 </section>
@@ -532,15 +532,17 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       const pallTxt=`${hel} pall`+(halv?' + 1 halvpall':'')+(extra?` + ${extra} lösa`:'')+` (à ${pall} st)`;
       const out=[row('Takyta',A,'m²','båda takfallen'),row('Takpannor',pannor,'st',`${fmt(pm2)} st/m² + spill`),row('Pallar',hel+(halv?0.5:0),'pall',pallTxt),row('Nockpannor',Math.ceil(N*npm*sp),'st',`${fmt(npm)} st per meter`),row($('t_und').value==='duk'?'Bärläkt 45×70':'Bärläkt 25×48',Math.ceil(barM),'lpm',`${Math.ceil(barM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_bar')}`),row($('t_und').value==='duk'?'Ströläkt 45×70':'Ströläkt 25×48',Math.ceil(stroM),'lpm',`${Math.ceil(stroM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_stro')}`),row('Nockbräda',Math.ceil(N*1.05),'lpm','')];
       const und=$('t_und').value, lucka=num('t_lucka');
-      if(und==='rs'&&lucka)out.push(row('Råspontsluckor',Math.ceil(A*1.05/lucka),'st',`à ${fmt(lucka)} m², 5 % spill`));
+      if(und==='rs'&&lucka)out.push(row('Råspontsluckor',Math.ceil(A*sp/lucka),'st',`à ${fmt(lucka)} m² + ${num('t_spill')} % spill`));
       if(und!=='ing'){const rb=sel('t_rulle',0),rl=sel('t_rulle',1);const os=rb>1?0.15:0.10;const netto=(rb-os)*(rl-0.15);
-        out.push(row(und==='rs'?'Underlagspapp':'Underlagsduk',Math.ceil(A*1.05/netto),'rullar',`${fmt(rb)} × ${fmt(rl)} m, ${fmt(Math.round(netto*10)/10)} m² netto, överlapp inräknat`));}
+        const rullar=Math.ceil(A*sp/netto);
+        out.push(row(und==='rs'?'Underlagspapp':'Underlagsduk',rullar,'rullar',`${fmt(rb)} × ${fmt(rl)} m = ${fmt(rb*rl)} m² rulle, täcker ${fmt(Math.round(netto*10)/10)} m² efter ${Math.round(os*1000)} mm sid- och 150 mm ändöverlapp, + ${num('t_spill')} % spill`));}
       return out;
     },
     papp(){
       const A=num('pp_yta'),sp=1+num('pp_spill')/100,b=num('pp_b'),l=num('pp_l'),os=num('pp_os')/1000,oe=num('pp_oe')/1000,kind=$('pp_typ').value.split('|')[4];
       const netto=Math.max(0.1,(b-os)*(l-oe)), brutto=A*sp;
-      const out=[row('Takyta',A,'m²','att täcka'),row('Rullar',Math.ceil(brutto/netto),'st',`${fmt(b)} × ${fmt(l)} m, ${fmt(Math.round(netto*10)/10)} m² netto per rulle`),row('Bruttoyta att köpa',Math.ceil(Math.ceil(brutto/netto)*b*l),'m²','inkl. överlapp och spill')];
+      const rullar=Math.ceil(brutto/netto);
+      const out=[row('Takyta',A,'m²','att täcka'),row('Rullar',rullar,'st',`${fmt(b)} × ${fmt(l)} m = ${fmt(Math.round(b*l*10)/10)} m² rulle, täcker ${fmt(Math.round(netto*10)/10)} m² efter ${num('pp_os')} mm sid- och ${num('pp_oe')} mm ändöverlapp`),row('Täckande yta',Math.round(rullar*netto*10)/10,'m²',`${rullar} rullar × ${fmt(Math.round(netto*10)/10)} m² – jämför med takytan + ${num('pp_spill')} % spill`),row('Bruttoyta att köpa',Math.ceil(rullar*b*l),'m²','rullarnas totala yta')];
       if(kind==='u')out.push(row('Pappspik',up(A*num('pp_spik'),100),'st',`${num('pp_spik')} st/m²`));
       if(kind==='y')out.push(row('Primer',Math.ceil(A*num('pp_prim')),'l',`${fmt(num('pp_prim'))} l/m² på underlaget`));
       return out;

@@ -89,7 +89,8 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 @media (prefers-reduced-motion:reduce){.toast{transition:none}}
 @media (max-width:380px){.grid{grid-template-columns:1fr}}
 
-.seo{margin-top:36px;padding-top:8px;border-top:3px solid var(--acc);max-width:62ch;font-size:15.5px;line-height:1.55}
+.seo{max-width:62ch;font-size:15px;line-height:1.55;margin:0}
+.seo.seo-in h2:first-child{margin-top:6px}
 .seo h2{font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin:28px 0 8px}
 .seo h3{font-size:17px;font-weight:600;margin:20px 0 4px}
 .seo p{margin:0 0 10px;color:var(--ink)}
@@ -443,7 +444,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 <p>Räknaren fungerar sedan offline, utan webbläsarram, och uppdateras automatiskt när du är uppkopplad.</p>
 </div></details></div>
 
-<article class="seo">
+<div class="src"><details><summary>Om räknaren – åtgångstal, källor och vanliga frågor</summary><div class="body"><article class="seo seo-in">
 <h2>Materialräknaren – räkna material direkt i mobilen</h2>
 <p>Materialräknaren är en gratis materialkalkylator för hantverkare, byggvaruhandel och privatpersoner som renoverar. Den räknar ut hur mycket material du behöver för de vanligaste momenten på ett bygge: gipsvägg, tak och läkt, papp och duk, ytterpanel, färg, plintar, betongplatta, fyllnadsmassor, trall och isolering. Alla förval är ett avrundat snitt av de stora leverantörernas egna anvisningar – Gyproc, Benders, BMI, Alcro, Beckers, Jotun, Nordsjö, Finja, Weber, Isover, Paroc, Rockwool och Svenskt Trä – och kan ändras när du vet vilket fabrikat som ska in. Resultatet är en inköpslista som går rakt till SMS eller mejl.</p>
 <p>Räknaren är byggd av <a href="https://stahledigital.se/verkstaden">Ståhle Digital i Växjö</a> och används dagligen vid disken i byggvaruhandeln. Den är en bra uppskattning, ingen bibel: kontrollera alltid mot etiketten eller monteringsanvisningen innan du beställer.</p>
@@ -495,7 +496,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 <h2>Saknas något?</h2>
 <p>Räknaren växer med det som saknas vid disken. Saknar du en kalkyl – klinker och fix, takplåt, altanräcke, murblock – <a href="https://stahledigital.se/#kontakt">skriv några rader till Ståhle Digital</a>. Har du ett eget moment som borde vara en app finns det plats för det också.</p>
 </article>
-
+</div></details></div>
 <footer><span>Materialräknaren · <a href="https://stahledigital.se/verkstaden" style="color:inherit">Verkstaden</a></span><span><a href="https://stahledigital.se" style="color:inherit">stahledigital.se</a></span></footer>
 </div>
 <div class="toast" id="toast">Kopierat</div>

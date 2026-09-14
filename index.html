@@ -132,13 +132,13 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="g_b">Sida B</label><div class="in"><select id="g_b">
       <option value="1|0" selected>1 gips</option><option value="2|0">2 gips</option><option value="3|0">3 gips (brand)</option><option value="0|1">OSB / plywood</option><option value="1|1">OSB + 1 gips</option><option value="2|1">OSB + 2 gips</option><option value="3|1">OSB + 3 gips</option><option value="0|0">Inget</option>
     </select></div></div>
+    <div class="f"><label for="g_cc">Regelavstånd</label><div class="in"><select id="g_cc"><option value="300">c/c 300</option><option value="400">c/c 400</option><option value="450" selected>c/c 450</option><option value="600">c/c 600</option></select></div></div>
     <div class="f"><label for="g_fog">Fog</label><div class="in"><select id="g_fog"><option value="" selected>Ingen</option><option value="Akustikfog">Akustikfog</option><option value="Brandfog">Brandfog</option></select></div></div>
     <div class="f"><label for="g_spill">Spill</label><div class="in"><select id="g_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
     <div class="f"><label for="g_skiva">Skivformat</label><div class="in"><select id="g_skiva"><option value="2.25">Gips 900 × 2500</option><option value="3" selected>Gips 1200 × 2500</option><option value="3.24">Gips 1200 × 2700</option><option value="2.25">Proffs Vägg 900 × 2500</option></select></div></div>
-    <div class="f"><label for="g_cc">Regelavstånd</label><div class="in"><select id="g_cc"><option value="450" selected>c/c 450</option><option value="600">c/c 600</option></select></div></div>
     <div class="f"><label for="g_osb">OSB/plywood-format</label><div class="in"><select id="g_osb"><option value="3" selected>1200 × 2500</option><option value="2.98">1220 × 2440</option><option value="3.24">1200 × 2700</option></select></div></div>
     <div class="f"><label for="g_skruv">Gipsskruv per m² och lager</label><div class="in"><input id="g_skruv" type="number" value="17"><span>st</span></div></div>
     <div class="f"><label for="g_oskruv">Träskruv OSB per m²</label><div class="in"><input id="g_oskruv" type="number" value="15"><span>st</span></div></div>
@@ -352,11 +352,11 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="tr_b">Däckbredd</label><div class="in"><input id="tr_b" type="number" step="0.1" value="4"><span>m</span></div></div>
     <div class="f"><label for="tr_bb">Brädbredd</label><div class="in"><input id="tr_bb" type="number" step="1" value="120"><span>mm</span></div></div>
     <div class="f"><label for="tr_sp">Spalt</label><div class="in"><input id="tr_sp" type="number" step="1" value="6"><span>mm</span></div></div>
+    <div class="f"><label for="tr_cc">Regelavstånd</label><div class="in"><select id="tr_cc"><option value="400">c/c 400</option><option value="500">c/c 500</option><option value="600" selected>c/c 600</option><option value="800">c/c 800</option></select></div></div>
     <div class="f"><label for="tr_spill">Spill</label><div class="in"><select id="tr_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
-    <div class="f"><label for="tr_cc">Regelavstånd</label><div class="in"><input id="tr_cc" type="number" step="50" value="600"><span>mm</span></div></div>
   </div></details>
   <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="tr_ctx"></p><div class="rows" id="tr_out"></div>
     <div class="actions"><button class="act" data-copy="tr_out">Kopiera listan</button><button class="act ghost" data-share="tr_out">Dela</button></div>

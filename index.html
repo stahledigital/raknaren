@@ -535,7 +535,6 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       if(und==='rs'&&lucka)out.push(row('Råspontsluckor',Math.ceil(A*1.05/lucka),'st',`à ${fmt(lucka)} m², 5 % spill`));
       if(und!=='ing'){const rb=sel('t_rulle',0),rl=sel('t_rulle',1);const os=rb>1?0.15:0.10;const netto=(rb-os)*(rl-0.15);
         out.push(row(und==='rs'?'Underlagspapp':'Underlagsduk',Math.ceil(A*1.05/netto),'rullar',`${fmt(rb)} × ${fmt(rl)} m, ${fmt(Math.round(netto*10)/10)} m² netto, överlapp inräknat`));}
-      if(und==='duk')out.push(row('Läkt 45×70',Math.ceil(A/1.2*1.05),'lpm','ströläkt c/c 1200 utan råspont – bärläkt 45×70 ovan'));
       return out;
     },
     papp(){

@@ -54,7 +54,7 @@ section[data-active]{display:block}
 .calc{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);margin-top:10px;min-width:0;overflow:hidden}
 .grid>*{min-width:0}
 .calc h2{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin:0;padding:14px 16px 4px}
-.calc p.lead{margin:0;padding:0 16px 12px;color:var(--ink2);font-size:14px;max-width:60ch}
+.calc p.lead{margin:0;padding:0 16px 12px;color:var(--ink2);font-size:15px;max-width:60ch}
 .sub{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);padding:10px 16px 0}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;padding:8px 16px 16px}
 .f{display:flex;flex-direction:column;gap:4px;min-width:0}
@@ -72,14 +72,17 @@ details[open] summary::after{content:"–"}
 .res h3{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
 .rows{display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:baseline}
 .rows .k{font-size:15px;min-width:0;overflow-wrap:anywhere}
-.rows .k small{display:block;color:var(--ink2);font-size:12px}
+.rows .k small{display:block;color:var(--ink2);font-size:13px}
 .rows .v{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;line-height:1}
 .rows .v u{text-decoration:none;font-size:14px;font-weight:600;font-family:Barlow,sans-serif;color:var(--ink2);margin-left:4px}
 .rows .hd{grid-column:1/-1;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);margin-top:6px}
 .actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
 .act{border:1px solid var(--ink);background:var(--ink);color:var(--bg);font:600 14px Barlow,sans-serif;padding:9px 14px;border-radius:var(--radius);cursor:pointer}
 .act.ghost{background:transparent;color:var(--ink)}
-.note{font-size:12px;color:var(--ink2);margin:10px 0 0;max-width:60ch}
+.note{font-size:13px;color:var(--ink2);margin:10px 0 0;max-width:60ch;line-height:1.45}
+.ctx{font-size:13px;color:var(--ink2);margin:0 0 10px;line-height:1.45;max-width:70ch}
+.ctx b{color:var(--ink);font-weight:600}
+.rows .msg{grid-column:1/-1;font-size:14px;color:var(--ink);background:var(--acc-soft,#fde9e1);padding:10px 12px;border-radius:6px}
 .src{margin-top:24px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius)}
 .src .body{padding:4px 16px 14px;font-size:13px;color:var(--ink2);line-height:1.5}
 .src .body p{margin:8px 0;max-width:62ch}
@@ -101,7 +104,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 <body>
 <div class="wrap">
 <header><h1>Materialräknaren</h1><small>Ståhle Digital · Verkstaden</small></header>
-<p class="disc"><b>En bra uppskattning – ingen bibel.</b> Förvalen är ett snitt av leverantörernas anvisningar. Kontrollera mot etiketten innan du beställer.</p>
+<p class="disc"><b>Mått in – materiallista ut.</b> Räkna, kopiera och skicka listan vidare. Förvalen är ett snitt av leverantörernas anvisningar: en bra uppskattning, ingen bibel – kontrollera mot etiketten innan du beställer.</p>
 
 <nav role="tablist" id="tabs">
   <button role="tab" aria-selected="true" data-t="gips">Gipsvägg</button>
@@ -142,9 +145,9 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="g_foglag">Fogas i</label><div class="in"><select id="g_foglag"><option value="alla" selected>Alla skivlag</option><option value="ytter">Yttersta laget</option></select></div></div>
     <div class="f"><label for="g_fogm">Fog per patron</label><div class="in"><input id="g_fogm" type="number" value="10"><span>lpm</span></div></div>
   </div></details>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="g_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="g_ctx"></p><div class="rows" id="g_out"></div>
     <div class="actions"><button class="act" data-copy="g_out">Kopiera listan</button><button class="act ghost" data-share="g_out">Dela</button></div>
-    <p class="note">Skruv: Gyproc anger 12–15 st/m², XL-Bygg 20 – snittet 17 täcker kapade skivor. Reglar: stående regel var c/c plus en extra, samt syll och hammarband. Fog: sträng mot golv, tak och anslutande väggar i varje skivlag (Gyproc), ca 10 lpm per 300 ml-patron vid 6 mm sträng, +10 % – brandväggar kräver godkänd brandfog och rätt antal lager enligt fabrikantens typgodkännande.</p>
+    <p class="note">Skruv: Gyproc anger 12–15 st/m², XL-Bygg 20 – snittet 17 täcker kapade skivor. Reglar: regel i båda ändar med högst c/c emellan (6,4 m på c/c 450 = 16 st), samt syll och hammarband. Skivskarvar kan kräva extra regel vid dörrar och hörn. Fog: sträng mot golv, tak och anslutande väggar i varje skivlag (Gyproc), ca 10 lpm per 300 ml-patron vid 6 mm sträng, +10 % – brandväggar kräver godkänd brandfog och rätt antal lager enligt fabrikantens typgodkännande.</p>
   </div>
 </div>
 </section>
@@ -214,7 +217,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="pp_prim">Primer, svetsbar papp</label><div class="in"><input id="pp_prim" type="number" step="0.05" value="0.3"><span>l/m²</span></div></div>
   </div></details>
   </div>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="t_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="t_ctx"></p><div class="rows" id="t_out"></div>
     <div class="actions"><button class="act" data-copy="t_out">Kopiera listan</button><button class="act ghost" data-share="t_out">Dela</button></div>
     <p class="note" id="t_note_pannor">Spill 5 % räcker på ett enkelt sadeltak; vinklar, kupor och valmar kräver 10–20 % (kapade pannor i ränndalar och mot nock). Pall = 240 pannor, halvpall 120 (vanligt för betongpannor – ändra under Förval om fabrikatet packar annorlunda). Läktavstånd sätts vid max bygglängd – brantare/flackare tak kan kräva tätare läkt (Benders: 310–375 mm beroende på lutning). Läkt 25×48 enligt nyare anvisningar.</p>
     <p class="note" id="t_note_papp" hidden>Rullens yta och täckande yta är inte samma sak: täckande = (bredd − sidöverlapp) × (längd − ändöverlapp). Välj spill efter takets form – en takläggare räknar ofta 10–20 % på vinkliga tak. Rullformat och överlapp varierar per fabrikat.</p>
@@ -247,7 +250,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="p_nb">Spik per korsning, bottenbräda</label><div class="in"><input id="p_nb" type="number" value="1"><span>st</span></div></div>
     <div class="f"><label for="p_nl">Spik per korsning, lock</label><div class="in"><input id="p_nl" type="number" value="2"><span>st</span></div></div>
   </div></details>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="p_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="p_ctx"></p><div class="rows" id="p_out"></div>
     <div class="actions"><button class="act" data-copy="p_out">Kopiera listan</button><button class="act ghost" data-share="p_out">Dela</button></div>
     <p class="note">Löpmeter enligt Svenskt Träs åtgångstabell. Spik räknas geometriskt: löpmeter bräda × antal läkt/reglar den korsar × spik per korsning – lockpanel på c/c 600 ger ca 33 st/m², vilket stämmer med XL-Byggs 30–35. Vinddukrulle 70 m² ger ca 65 m² netto med 100 mm överlapp.</p>
   </div>
@@ -272,7 +275,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="f_tack">Täckförmåga</label><div class="in"><input id="f_tack" type="number" step="0.5" value="7"><span>m²/l</span></div></div>
     <div class="f"><label for="f_burk">Burkstorlek</label><div class="in"><select id="f_burk"><option value="2.5">2,5 l</option><option value="5">5 l</option><option value="10" selected>10 l</option></select></div></div>
   </div></details>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="f_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="f_ctx"></p><div class="rows" id="f_out"></div>
     <div class="actions"><button class="act" data-copy="f_out">Kopiera listan</button><button class="act ghost" data-share="f_out">Dela</button></div>
     <p class="note">Snitt av Alcro, Beckers, Jotun och Nordsjö (6–10 m²/l). Sugande underlag drar mer första strykningen.</p>
   </div>
@@ -303,7 +306,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="b_dj">Djup</label><div class="in"><input id="b_dj" type="number" step="50" value="900"><span>mm</span></div></div>
     <div class="f"><label for="b_sack">Betong per 25 kg säck</label><div class="in"><input id="b_sack" type="number" step="0.5" value="12.5"><span>l</span></div></div>
   </div>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="pl_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="pl_ctx"></p><div class="rows" id="pl_out"></div>
     <div class="actions"><button class="act" data-copy="pl_out">Kopiera listan</button><button class="act ghost" data-share="pl_out">Dela</button></div>
     <p class="note">Plintar: Finja/Weber/Byggmax anger 12,5–13 l per 25 kg-säck. Över ca 1 m³ är fabriksbetong nästan alltid billigare än säckar – räkna med minsta debitering runt 4 m³ eller småleveranstillägg. Nät räknat med 1,5 rutors överlapp (≈ 9,7 m² täckyta per nät).</p>
   </div>
@@ -332,7 +335,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="fy_pack">Packning / svinn</label><div class="in"><input id="fy_pack" type="number" value="10"><span>%</span></div></div>
     <div class="f"><label for="fy_bag">Storsäck</label><div class="in"><input id="fy_bag" type="number" step="100" value="1000"><span>kg</span></div></div>
   </div></details>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="fy_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="fy_ctx"></p><div class="rows" id="fy_out"></div>
     <div class="actions"><button class="act" data-copy="fy_out">Kopiera listan</button><button class="act ghost" data-share="fy_out">Dela</button></div>
     <p class="note">Densiteter är snitt av Snabbgrus, CRREX, NCC Sten m.fl. Bergkross och stenmjöl packar mer – därför 15 % där. Grusbilar lastar normalt 10–15 ton.</p>
   </div>
@@ -355,7 +358,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   <div class="grid">
     <div class="f"><label for="tr_cc">Regelavstånd</label><div class="in"><input id="tr_cc" type="number" step="50" value="600"><span>mm</span></div></div>
   </div></details>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="tr_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="tr_ctx"></p><div class="rows" id="tr_out"></div>
     <div class="actions"><button class="act" data-copy="tr_out">Kopiera listan</button><button class="act ghost" data-share="tr_out">Dela</button></div>
     <p class="note">Två skruv per bräda och regel – ger ca 30 st/m² vid c/c 600, i linje med Duab och Kalkylverket. Svenskt Trä: 8,3 lpm/m² för 120 mm.</p>
   </div>
@@ -383,7 +386,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="lu_dens">Ulltyp</label><div class="in"><select id="lu_dens"><option value="22" selected>Glasull (22 kg/m³)</option><option value="30">Stenull (30 kg/m³)</option><option value="35">Cellulosa (35 kg/m³)</option></select></div></div>
     <div class="f"><label for="lu_bef">Befintlig isolering</label><div class="in"><input id="lu_bef" type="number" step="10" value="0"><span>mm</span></div></div>
   </div>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="i_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="i_ctx"></p><div class="rows" id="i_out"></div>
     <div class="actions"><button class="act" data-copy="i_out">Kopiera listan</button><button class="act ghost" data-share="i_out">Dela</button></div>
     <p class="note">m²/paket är snitt av Isover UNI, Paroc eXtra och Rockwool Flexibatts för c/c 600 – står alltid på etiketten. Lösull: densiteten är den färdigblåsta, entreprenören räknar kg – jämför mot deras offert.</p>
   </div>
@@ -426,7 +429,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="go_cc">Golvbjälkar c/c</label><div class="in"><select id="go_cc"><option value="400">c/c 400</option><option value="600" selected>c/c 600</option></select></div></div>
     <div class="f"><label for="go_spill">Spill</label><div class="in"><select id="go_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
-  <div class="res"><h3>Att hämta</h3><div class="rows" id="in_out"></div>
+  <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="in_ctx"></p><div class="rows" id="in_out"></div>
     <div class="actions"><button class="act" data-copy="in_out">Kopiera listan</button><button class="act ghost" data-share="in_out">Dela</button></div>
     <p class="note">Panel räknas som löpmeter = yta ÷ täckande bredd. Skruv: gips 17 st/m², golvspån 15 st/m² (riktvärden); panel 1–2 spik/skruv per regelkorsning. Laminat/parkett: kontrollera m² per paket på förpackningen.</p>
   </div>
@@ -446,7 +449,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 
 <div class="src"><details><summary>Om räknaren – åtgångstal, källor och vanliga frågor</summary><div class="body"><article class="seo seo-in">
 <h2>Materialräknaren – räkna material direkt i mobilen</h2>
-<p>Materialräknaren är en gratis materialkalkylator för hantverkare, byggvaruhandel och privatpersoner som renoverar. Den räknar ut hur mycket material du behöver för de vanligaste momenten på ett bygge: gipsvägg, tak och läkt, papp och duk, ytterpanel, färg, plintar, betongplatta, fyllnadsmassor, trall och isolering. Alla förval är ett avrundat snitt av de stora leverantörernas egna anvisningar – Gyproc, Benders, BMI, Alcro, Beckers, Jotun, Nordsjö, Finja, Weber, Isover, Paroc, Rockwool och Svenskt Trä – och kan ändras när du vet vilket fabrikat som ska in. Resultatet är en inköpslista som går rakt till SMS eller mejl.</p>
+<p>Materialräknaren är en gratis materialkalkylator för hantverkare, byggvaruhandel och privatpersoner som renoverar. Den räknar ut hur mycket material du behöver för de vanligaste momenten på ett bygge: gipsvägg, tak och läkt, papp och duk, ytterpanel, färg, plintar, betongplatta, fyllnadsmassor, trall och isolering. Alla förval är ett avrundat snitt av de stora leverantörernas egna anvisningar – Gyproc, Benders, BMI, Alcro, Beckers, Jotun, Nordsjö, Finja, Weber, Isover, Paroc, Rockwool och Svenskt Trä – och kan ändras när du vet vilket fabrikat som ska in. Resultatet är en beräknad materiallista, med måtten och förvalen den bygger på, som går rakt till SMS eller mejl.</p>
 <p>Räknaren är byggd av <a href="https://stahledigital.se/verkstaden">Ståhle Digital i Växjö</a> och används dagligen vid disken i byggvaruhandeln. Den är en bra uppskattning, ingen bibel: kontrollera alltid mot etiketten eller monteringsanvisningen innan du beställer.</p>
 
 <h2>Vanliga frågor om materialåtgång</h2>
@@ -464,7 +467,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 <p>Gyprocs monteringsanvisning ger 35 skruv per skiva 1200×2400 vid c/c 600 och 44 vid c/c 450, alltså 12–15 skruv per m². Byggvaruhandelns tumregel är 20 per m². Räknaren använder <strong>17 skruv per m² och lager</strong> som snitt, vilket täcker kapade skivor och kanter. En gipsskiva 1200×2500 är 3 m², 900×2500 är 2,25 m².</p>
 
 <h3>Hur många reglar behövs till en gipsvägg?</h3>
-<p>Antal stående reglar = vägglängd ÷ regelavstånd + 1, plus syll och hammarband (2 × vägglängd). En 6,4 m lång vägg på c/c 450 kräver 15 stående reglar. Räknaren låter dig välja uppbyggnad per sida – ett eller två lager gips, OSB/plywood, eller kombinationer – och ger antal skivor per sort.</p>
+<p>Antal stående reglar = vägglängd ÷ regelavstånd, avrundat uppåt, + 1 (regel i båda ändar och högst c/c emellan), plus syll och hammarband (2 × vägglängd). En 6,4 m lång vägg på c/c 450 kräver 16 stående reglar. Dörrar, hörn och skivskarvar kan kräva någon extra. Räknaren låter dig välja uppbyggnad per sida – ett eller två lager gips, OSB/plywood, eller kombinationer – och ger antal skivor per sort.</p>
 
 <h3>Hur mycket brandfog eller akustikfog går det till en gipsvägg?</h3>
 <p>Brand- och ljudväggar fogas mot golv, tak och anslutande väggar i varje skivlag enligt Gyprocs anvisning. Fogåtgången är därför väggens omkrets (2 × längd + 2 × höjd) gånger antalet skivlag som ska fogas. En 300 ml-patron räcker till cirka <strong>10 löpmeter</strong> vid 6 mm sträng. En 6,4 × 2,5 m brandvägg med tre lager gips per sida (sex skivlag) kräver knappt 110 lpm, alltså 12 patroner inklusive 10 % marginal. Brandväggar ska byggas exakt enligt fabrikantens typgodkännande – antal lager, skivtyp och fog hör ihop med brandklassen.</p>
@@ -513,13 +516,16 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   const fmt=n=>Number.isInteger(n)?n.toLocaleString('sv-SE'):n.toLocaleString('sv-SE',{maximumFractionDigits:1});
   const row=(k,v,u,sub)=>`<div class="k">${k}${sub?`<small>${sub}</small>`:''}</div><div class="v">${fmt(v)}<u>${u}</u></div>`;
   const hd=t=>`<div class="hd">${t}</div>`;
+  const msg=t=>`<div class="msg">${t}</div>`;
+  const studs=(L,cc)=>Math.ceil(L/cc-1e-9)+1; // regel i båda ändar, högst c/c emellan
 
   const calcs={
     gips(){
       const L=num('g_l'),H=num('g_h'),sk=num('g_skiva'),osk=num('g_osb'),cc=num('g_cc')/1000,spm=num('g_skruv'),ospm=num('g_oskruv'),sp=1+num('g_spill')/100;
+      if(!(L>0&&H>0))return [msg('Ange vägglängd och vägghöjd större än 0.')];
       const A=L*H, gipsL=sel('g_a',0)+sel('g_b',0), osbL=sel('g_a',1)+sel('g_b',1);
       const gipsArea=A*gipsL, osbArea=A*osbL;
-      const reglar=Math.floor(L/cc)+1, regelM=reglar*H+2*L;
+      const reglar=studs(L,cc), regelM=reglar*H+2*L;
       const out=[row('Väggyta',Math.round(A*10)/10,'m²',`${fmt(L)} × ${fmt(H)} m, en sida`)];
       if(gipsL)out.push(row('Gipsskivor',Math.ceil(gipsArea/sk*sp),'st',`${gipsL} lager totalt, ${fmt(Math.round(gipsArea*10)/10)} m² + spill`));
       if(osbL)out.push(row('OSB / plywood',Math.ceil(osbArea/osk*sp),'st',`${osbL} lager, ${fmt(Math.round(osbArea*10)/10)} m² + spill`));
@@ -537,7 +543,8 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     },
     tak(){
       if($('t_mode').value==='papp')return calcs.papp();
-      const A=num('t_yta'),N=num('t_nock'),bar=num('t_bar')/1000,stro=num('t_stro')/1000,pm2=num('t_pm2'),npm=num('t_npm'),lakt=num('t_lakt'),sp=1+num('t_spill')/100;
+      const A=num('t_yta');if(!(A>0))return [msg('Ange takyta större än 0.')];
+      const N=num('t_nock'),bar=num('t_bar')/1000,stro=num('t_stro')/1000,pm2=num('t_pm2'),npm=num('t_npm'),lakt=num('t_lakt'),sp=1+num('t_spill')/100;
       const barM=A/bar*sp, stroM=A/stro*sp;
       const pannor=Math.ceil(A*pm2*sp), pall=num('t_pall'), hel=Math.floor(pannor/pall), rest=pannor-hel*pall, halv=rest>0&&rest<=pall/2?1:0, extra=halv?0:rest;
       const pallTxt=`${hel} pall`+(halv?' + 1 halvpall':'')+(extra?` + ${extra} lösa`:'')+` (à ${pall} st)`;
@@ -550,7 +557,8 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       return out;
     },
     papp(){
-      const A=num('pp_yta'),sp=1+num('pp_spill')/100,b=num('pp_b'),l=num('pp_l'),os=num('pp_os')/1000,oe=num('pp_oe')/1000,kind=$('pp_typ').value.split('|')[4];
+      const A=num('pp_yta');if(!(A>0))return [msg('Ange takyta större än 0.')];
+      const sp=1+num('pp_spill')/100,b=num('pp_b'),l=num('pp_l'),os=num('pp_os')/1000,oe=num('pp_oe')/1000,kind=$('pp_typ').value.split('|')[4];
       const netto=Math.max(0.1,(b-os)*(l-oe)), brutto=A*sp;
       const rullar=Math.ceil(brutto/netto);
       const out=[row('Takyta',A,'m²','att täcka'),row('Rullar',rullar,'st',`${fmt(b)} × ${fmt(l)} m = ${fmt(Math.round(b*l*10)/10)} m² rulle, täcker ${fmt(Math.round(netto*10)/10)} m² efter ${num('pp_os')} mm sid- och ${num('pp_oe')} mm ändöverlapp`),row('Täckande yta',Math.round(rullar*netto*10)/10,'m²',`${rullar} rullar × ${fmt(Math.round(netto*10)/10)} m² – jämför med takytan + ${num('pp_spill')} % spill`),row('Bruttoyta att köpa',Math.ceil(rullar*b*l),'m²','rullarnas totala yta')];
@@ -561,19 +569,22 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     inne(){
       const out=[];
       const A=num('it_yta'),t=$('it_typ').value.split('|'),cc=num('it_cc')/1000,sp=1+num('it_spill')/100;
-      out.push(hd('Innertak'),row('Takyta',A,'m²',''));
+      const G=num('go_yta');
+      if(!(A>0)&&!(G>0))return [msg('Ange takyta och/eller golvyta större än 0.')];
+      if(A>0){out.push(hd('Innertak'),row('Takyta',A,'m²',''));
       if(t[0]==='skiva'){out.push(row('Skivor',Math.ceil(A*sp/+t[1]),'st',`à ${fmt(+t[1])} m² + spill`),row('Skruv',up(A*(+t[2]),50),'st',`${t[2]} st/m²`));}
       else{const lpm=A/+t[1]*sp;out.push(row('Panel',Math.ceil(lpm),'lpm',`täckbredd ${Math.round(+t[1]*1000)} mm + spill`),row('Spik / skruv',up(lpm/cc*1.5,100),'st',`1–2 per korsning, c/c ${num('it_cc')}`));}
-      out.push(row('Glespanel / reglar',Math.ceil(A/cc*1.05),'lpm',`c/c ${num('it_cc')}`));
-      const G=num('go_yta'),g=$('go_typ').value.split('|'),gcc=num('go_cc')/1000,gsp=1+num('go_spill')/100;
-      out.push(hd('Golv'),row('Golvyta',G,'m²',''));
+      out.push(row('Glespanel / reglar',Math.ceil(A/cc*1.05),'lpm',`c/c ${num('it_cc')}`));}
+      const g=$('go_typ').value.split('|'),gcc=num('go_cc')/1000,gsp=1+num('go_spill')/100;
+      if(G>0){out.push(hd('Golv'),row('Golvyta',G,'m²',''));
       if(g[0]==='skiva'){out.push(row('Skivor',Math.ceil(G*gsp/+g[1]),'st',`à ${fmt(+g[1])} m² + spill`),row('Golvskruv',up(G*(+g[2]),50),'st',`${g[2]} st/m²`),row('Golvlim (spont)',Math.ceil(G*0.1),'l','ca 0,1 l/m²'));}
       else if(g[0]==='pak'){out.push(row('Paket',Math.ceil(G*gsp/+g[1]),'st',`à ${fmt(+g[1])} m² + spill`),row('Underlagsfoam',Math.ceil(G*1.05),'m²',''));}
-      else{const lpm=G/+g[1]*gsp;out.push(row('Golvbrädor',Math.ceil(lpm),'lpm',`täckbredd ${Math.round(+g[1]*1000)} mm + spill`),row('Golvskruv / spik',up(lpm/gcc*2,100),'st',`2 per bjälke, c/c ${num('go_cc')}`));}
+      else{const lpm=G/+g[1]*gsp;out.push(row('Golvbrädor',Math.ceil(lpm),'lpm',`täckbredd ${Math.round(+g[1]*1000)} mm + spill`),row('Golvskruv / spik',up(lpm/gcc*2,100),'st',`2 per bjälke, c/c ${num('go_cc')}`));}}
       return out;
     },
     panel(){
       const A=num('p_yta'),b=sel('p_typ',0),l=sel('p_typ',1),nb=num('p_nb'),nl=num('p_nl'),lcc=num('p_lakt')/1000,vind=num('p_vind'),sp=1+num('p_spill')/100,st=$('p_rikt').value==='s';
+      if(!(A>0))return [msg('Ange fasadyta större än 0.')];
       const kors=1/lcc; // korsningar per löpmeter bräda
       const spikM2=b*kors*nb+l*kors*nl;
       const out=[row('Fasadyta',A,'m²','netto, öppningar avdragna'),row(l?'Bottenbräda':'Panelbräda',Math.ceil(A*b*sp),'lpm',`${fmt(b)} lpm/m² + spill`)];
@@ -586,41 +597,55 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     },
     farg(){
       const A=Math.max(0,num('f_omk')*num('f_h')-num('f_opp')),str=num('f_str'),tack=num('f_tack'),burk=num('f_burk');
+      if(!(A>0))return [msg('Ange omkrets och höjd – öppningarna får inte vara större än väggytan.')];
       const fsp=1+num('f_spill')/100;const liter=A*str/tack*fsp;
       return [row('Yta att måla',Math.round(A*10)/10,'m²','öppningar avdragna'),row('Färg',Math.round(liter*10)/10,'l',`${str} strykningar + ${num('f_spill')} % spill`),row('Burkar',Math.ceil(liter/burk),'st',`à ${fmt(burk)} l`)];
     },
     platta(){
       const A=num('pl_yta'),t=num('pl_t')/1000,cell=num('pl_cell'),nat=num('pl_nat'),sp=1+num('pl_spill')/100,sack=num('pl_sack');
-      const m3=A*t*sp;
-      const out=[row('Platta',A,'m²',`${num('pl_t')} mm tjock = ${fmt(Math.round(A*t*100)/100)} m³ netto`),row('Betong att beställa',Math.round(m3*10)/10,'m³',`+ ${num('pl_spill')} % spill`),row('…eller torrbetong 25 kg',Math.ceil(m3*sack),'säckar',`${sack} säckar/m³`)];
-      if(nat)out.push(row('Armeringsnät',Math.ceil(A/nat),'st','5,0 × 2,3 m, överlapp inräknat'));
+      const m3=A*t*sp; const n=num('b_n');
+      if(!(A>0)&&!(n>0))return [msg('Ange plattans yta och/eller antal plintar större än 0.')];
+      const out=A>0?[row('Platta',A,'m²',`${num('pl_t')} mm tjock = ${fmt(Math.round(A*t*100)/100)} m³ netto`),row('Betong att beställa',Math.round(m3*10)/10,'m³',`+ ${num('pl_spill')} % spill`),row('…eller torrbetong 25 kg',Math.ceil(m3*sack),'säckar',`${sack} säckar/m³`)]:[];
+      if(A>0){if(nat)out.push(row('Armeringsnät',Math.ceil(A/nat),'st','5,0 × 2,3 m, överlapp inräknat'));
       if(cell)out.push(row('Cellplast 100 mm',Math.ceil(A*cell*1.05/0.72),'skivor',`${Math.ceil(A*cell*1.05/3.6)} paket à 3,6 m², ${cell} lager`));
-      out.unshift(hd('Platta'));
-      const n=num('b_n'),d=num('b_d')/1000,h=num('b_dj')/1000,psack=num('b_sack');const vol=n*Math.PI*(d/2)**2*h*1000*sp;
-      out.push(hd('Plintar'),row('Volym',Math.round(vol/sp)/1000,'m³',`${n} × Ø${num('b_d')} × ${num('b_dj')} mm`),row('Betong att köpa',Math.ceil(vol),'l',`+ ${num('pl_spill')} % spill`),row('Torrbetong 25 kg',Math.ceil(vol/psack),'säckar',`${fmt(psack)} l per säck`));
+      out.unshift(hd('Platta'));}
+      const d=num('b_d')/1000,h=num('b_dj')/1000,psack=num('b_sack');const vol=n*Math.PI*(d/2)**2*h*1000*sp;
+      if(n>0)out.push(hd('Plintar'),row('Volym',Math.round(vol/sp)/1000,'m³',`${n} × Ø${num('b_d')} × ${num('b_dj')} mm`),row('Betong att köpa',Math.ceil(vol),'l',`+ ${num('pl_spill')} % spill`),row('Torrbetong 25 kg',Math.ceil(vol/psack),'säckar',`${fmt(psack)} l per säck`));
       return out;
     },
     fyll(){
       const A=num('fy_yta'),t=num('fy_t')/1000,dens=sel('fy_mat',0),bagM3=sel('fy_mat',2),pack=1+num('fy_pack')/100,bag=num('fy_bag');
+      if(!(A>0))return [msg('Ange yta större än 0.')];
       const m3=A*t*pack, ton=m3*dens;
       return [row('Yta',A,'m²',`${num('fy_t')} mm packat = ${fmt(Math.round(A*t*100)/100)} m³ netto`),row('Volym att beställa',Math.round(m3*10)/10,'m³',`+ ${num('fy_pack')} % packning/svinn`),row('Vikt',Math.round(ton*10)/10,'ton',`${fmt(dens)} t/m³`),row('Storsäck',Math.ceil(ton*1000/bag),'st',`à ${bag} kg ≈ ${fmt(bagM3)} m³`)];
     },
     trall(){
       const L=num('tr_l'),B=num('tr_b'),bb=num('tr_bb')/1000,spalt=num('tr_sp')/1000,cc=num('tr_cc')/1000,sp=1+num('tr_spill')/100;
+      if(!(L>0&&B>0))return [msg('Ange däcklängd och däckbredd större än 0.')];
       const rader=Math.ceil(B/(bb+spalt)), lpm=rader*L*sp;
-      const reglar=Math.floor(L/cc)+1, regelM=reglar*B;
+      const reglar=studs(L,cc), regelM=reglar*B;
       return [row('Däckyta',Math.round(L*B*10)/10,'m²',`${fmt(L)} × ${fmt(B)} m`),row('Trall',Math.ceil(lpm),'lpm',`${rader} rader à ${fmt(L)} m + spill`),row('Reglar',reglar,'st',`${Math.ceil(regelM)} lpm, c/c ${num('tr_cc')}`),row('Trallskruv',up(rader*reglar*2*sp,100),'st','avrundat till 100')];
     },
     iso(){
       const A=num('i_yta'),t=sel('i_t',0)/1000,pak=num('i_pak'),sp=1+num('i_spill')/100;
       const VA=num('lu_yta'),VT=Math.max(0,num('lu_t')-num('lu_bef'))/1000,dens=num('lu_dens');
-      const vm3=VA*VT;
-      return [hd('Skivor'),row('Yta att isolera',A,'m²',`${sel('i_t',0)} mm = ${fmt(Math.round(A*t*100)/100)} m³`),row('Isolering att köpa',Math.round(A*sp*10)/10,'m²','inkl. spill'),row('Paket',Math.ceil(A*sp/pak),'st',`à ${fmt(pak)} m²`),
-              hd('Lösull'),row('Volym',Math.round(vm3*10)/10,'m³',`${VA} m² × ${Math.round(VT*1000)} mm nytt lager`),row('Färdigblåst vikt',Math.round(vm3*dens),'kg',`${dens} kg/m³`)];
+      const vm3=VA*VT, out=[];
+      if(!(A>0)&&!(vm3>0))return [msg('Ange yta för skivor och/eller vindsyta och tjocklek för lösull.')];
+      if(A>0)out.push(hd('Skivor'),row('Yta att isolera',A,'m²',`${sel('i_t',0)} mm = ${fmt(Math.round(A*t*100)/100)} m³`),row('Isolering att köpa',Math.round(A*sp*10)/10,'m²','inkl. spill'),row('Paket',Math.ceil(A*sp/pak),'st',`à ${fmt(pak)} m²`));
+      if(vm3>0)out.push(hd('Lösull'),row('Volym',Math.round(vm3*10)/10,'m³',`${VA} m² × ${Math.round(VT*1000)} mm nytt lager`),row('Färdigblåst vikt',Math.round(vm3*dens),'kg',`${dens} kg/m³`));
+      return out;
     }
   };
   const outs={gips:'g_out',tak:'t_out',inne:'in_out',panel:'p_out',farg:'f_out',platta:'pl_out',fyll:'fy_out',trall:'tr_out',iso:'i_out'};
-  function render(){for(const k in outs){$(outs[k]).innerHTML=calcs[k]().join('');}}
+  function ctxOf(sec){
+    return [...sec.querySelectorAll('.f')].filter(f=>!f.closest('[hidden]')).map(f=>{
+      const lab=f.querySelector('label').textContent.trim(), el=f.querySelector('select,input'); if(!el)return null;
+      let v=el.tagName==='SELECT'?(el.selectedOptions[0]?el.selectedOptions[0].textContent.trim():''):(el.value===''||isNaN(+el.value)?'–':fmt(+el.value));
+      const u=f.querySelector('.in span'); if(el.tagName!=='SELECT'&&u)v+=' '+u.textContent.trim();
+      return `${lab} ${v}`;
+    }).filter(Boolean).join(' · ');
+  }
+  function render(){for(const k in outs){$(outs[k]).innerHTML=calcs[k]().join('');const c=$(outs[k].replace('_out','_ctx'));if(c)c.innerHTML='<b>Räknat på:</b> '+ctxOf(c.closest('section'));}}
 
   // presets that push values into their fields
   $('t_typ').addEventListener('change',()=>{$('t_pm2').value=sel('t_typ',0);$('t_bar').value=sel('t_typ',1);$('t_npm').value=sel('t_typ',2);});
@@ -637,17 +662,26 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   render();
 
   const tabs=$('tabs');
-  tabs.addEventListener('click',e=>{
-    const b=e.target.closest('button');if(!b)return;
+  function activate(id,push){
+    const b=tabs.querySelector(`button[data-t="${id}"]`);if(!b)return;
     tabs.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b));
-    document.querySelectorAll('section').forEach(s=>s.toggleAttribute('data-active',s.id===b.dataset.t));
-  });
+    document.querySelectorAll('section').forEach(s=>s.toggleAttribute('data-active',s.id===id));
+    if(push){try{history.replaceState(null,'','#'+id);}catch(e){}}
+  }
+  tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)activate(b.dataset.t,true);});
+  window.addEventListener('hashchange',()=>activate(location.hash.slice(1),false));
+  if(location.hash.length>1)activate(location.hash.slice(1),false);
 
   function listText(id){
     const sec=$(id).closest('section');const title=sec.querySelector('h2').textContent;
-    const ks=[...$(id).querySelectorAll('.k')],vs=[...$(id).querySelectorAll('.v')];
-    const lines=ks.map((k,i)=>`${k.firstChild.textContent.trim()}: ${vs[i].firstChild.textContent} ${vs[i].querySelector('u').textContent}`);
-    return `${title} – Materialräknaren (uppskattning)\n`+lines.join('\n');
+    const lines=[];
+    for(const el of $(id).children){
+      if(el.classList.contains('hd'))lines.push(`— ${el.textContent} —`);
+      else if(el.classList.contains('msg'))lines.push(el.textContent);
+      else if(el.classList.contains('k')){const v=el.nextElementSibling,sm=el.querySelector('small');
+        lines.push(`${el.firstChild.textContent.trim()}: ${v.firstChild.textContent} ${v.querySelector('u').textContent}`+(sm&&sm.textContent?` (${sm.textContent})`:''));}
+    }
+    return `${title} – beräknad materialåtgång\nRäknat på: ${ctxOf(sec)}\n\n`+lines.join('\n')+`\n\nUppskattning från Materialräknaren, kontrollera mot etikett/anvisning. https://raknaren.stahledigital.se/`;
   }
   const toast=$('toast');let tt;
   function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),1600);}
@@ -661,7 +695,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   }));
 })();
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "@id": "https://raknaren.stahledigital.se/#app", "name": "Materialräknaren", "alternateName": "Materialräknaren – Ståhle Digital", "url": "https://raknaren.stahledigital.se/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (PWA)", "inLanguage": "sv-SE", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "SEK"}, "description": "Gratis materialkalkylator för gipsvägg, tak och läkt, papp och duk, ytterpanel, färg, plintar, betongplatta, fyllnadsmassor, trall och isolering.", "featureList": ["Takpannor och nockpannor per m²", "Gipsskivor, reglar och skruv", "Färgåtgång", "Torrbetong och fabriksbetong", "Fyllnadsmassor i ton och storsäck", "Trall och trallskruv", "Ytterpanel, spik och vindduk", "Isolering och lösull", "Underlagspapp och duk med överlapp"], "author": {"@id": "https://stahledigital.se/#organization"}, "publisher": {"@id": "https://stahledigital.se/#organization"}, "image": "https://raknaren.stahledigital.se/og.png", "datePublished": "2026-09-13"}, {"@type": "Organization", "@id": "https://stahledigital.se/#organization", "name": "Ståhle Digital", "url": "https://stahledigital.se", "logo": "https://stahledigital.se/og.png", "address": {"@type": "PostalAddress", "addressLocality": "Växjö", "addressCountry": "SE"}}, {"@type": "FAQPage", "@id": "https://raknaren.stahledigital.se/#faq", "mainEntity": [{"@type": "Question", "name": "Hur många takpannor går det per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Det beror på pannan och läktavståndet. Tvåkupiga betongpannor som Benders Palema och BMI Jönåker ligger på cirka 9 pannor per m² vid maximalt läktavstånd 375 mm. Platta betongpannor som Benders Carisma kräver cirka 11,5 per m², enkupig betong (Exklusiv) 10,7, tvåkupigt tegel (Vittinge T11) 11,1 och enkupigt tegel (Vittinge E13) 13,3 per m². Lägg till 3–5 % spill. Pannor säljs normalt på pall om 240 eller halvpall om 120 – räknaren visar antal pallar direkt."}}, {"@type": "Question", "name": "Hur många nockpannor per meter?", "acceptedAnswer": {"@type": "Answer", "text": "Betongnockpannor är oftast 420 mm långa och ger cirka 2,8 nockpannor per löpmeter nock (Benders anger 2,4–2,8 beroende på montage, BMI 3). Nocktegel för Vittinge är 315 mm och ger 3,5 per meter."}}, {"@type": "Question", "name": "Vilket läktavstånd ska bärläkten ha?", "acceptedAnswer": {"@type": "Answer", "text": "Benders anger 310–375 mm för Palema och Exklusiv beroende på taklutning (brantare tak tillåter längre bygglängd), max 350 mm för Carisma. BMI Jönåker 300–375 mm och Vittinge 375 mm. Ströläkt monteras på c/c 600 mm, läkt 25×48 enligt nyare anvisningar. Bärläkt i löpmeter = takyta ÷ läktavstånd."}}, {"@type": "Question", "name": "Hur många gipsskruv går det per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Gyprocs monteringsanvisning ger 35 skruv per skiva 1200×2400 vid c/c 600 och 44 vid c/c 450, alltså 12–15 skruv per m². Byggvaruhandelns tumregel är 20 per m². Räknaren använder 17 skruv per m² och lager som snitt, vilket täcker kapade skivor och kanter. En gipsskiva 1200×2500 är 3 m², 900×2500 är 2,25 m²."}}, {"@type": "Question", "name": "Hur många reglar behövs till en gipsvägg?", "acceptedAnswer": {"@type": "Answer", "text": "Antal stående reglar = vägglängd ÷ regelavstånd + 1, plus syll och hammarband (2 × vägglängd). En 6,4 m lång vägg på c/c 450 kräver 15 stående reglar. Räknaren låter dig välja uppbyggnad per sida – ett eller två lager gips, OSB/plywood, eller kombinationer – och ger antal skivor per sort."}}, {"@type": "Question", "name": "Hur mycket brandfog eller akustikfog går det till en gipsvägg?", "acceptedAnswer": {"@type": "Answer", "text": "Brand- och ljudväggar fogas mot golv, tak och anslutande väggar i varje skivlag enligt Gyprocs anvisning. Fogåtgången är därför väggens omkrets (2 × längd + 2 × höjd) gånger antalet skivlag som ska fogas. En 300 ml-patron räcker till cirka 10 löpmeter vid 6 mm sträng. En 6,4 × 2,5 m brandvägg med tre lager gips per sida (sex skivlag) kräver knappt 110 lpm, alltså 12 patroner inklusive 10 % marginal. Brandväggar ska byggas exakt enligt fabrikantens typgodkännande – antal lager, skivtyp och fog hör ihop med brandklassen."}}, {"@type": "Question", "name": "Hur mycket färg går det åt per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Väggfärg inomhus täcker 6–10 m² per liter och strykning: Alcro Milltex 7 och Beckers Scotte 7 anger 6–8, Jotun Lady 9, Nordsjö Ambiance 8–10. Räknaren använder 7 m²/l och två strykningar. Fasadfärg på sågat virke drar mer (6–8 m²/l, Beckers Perfekt Fasad) än på hyvlat (10–12 m²/l, Jotun Demidekk). Dra av dörrar och fönster från väggytan."}}, {"@type": "Question", "name": "Hur många säckar torrbetong per kubikmeter?", "acceptedAnswer": {"@type": "Answer", "text": "En säck grovbetong på 25 kg ger cirka 12,5–13 liter färdig betong enligt Finja, Weber och Byggmax – det vill säga ungefär 80 säckar eller 2 ton per m³. Över cirka 1 m³ är fabriksbetong nästan alltid billigare; räkna med minsta debitering runt 4 m³ eller småleveranstillägg. Till en plint Ø200 × 900 mm går det cirka 28 liter, alltså 2–3 säckar."}}, {"@type": "Question", "name": "Hur mycket betong till en platta på mark?", "acceptedAnswer": {"@type": "Answer", "text": "Volym = yta × tjocklek: en 40 m² platta med 100 mm betong är 4 m³, plus 5–10 % spill. Ett armeringsnät 5,0 × 2,3 m täcker cirka 9,7 m² med 1,5 rutors överlapp. Cellplast S100 säljs i skivor 600 × 1200 mm (0,72 m², 3,6 m² per paket) och läggs normalt i 2–3 lager à 100 mm under en bostadsplatta."}}, {"@type": "Question", "name": "Hur mycket väger en kubik makadam eller bergkross?", "acceptedAnswer": {"@type": "Answer", "text": "Makadam 8–16 och 16–32 väger cirka 1,4 ton per m³ löst, bergkross 0–32 cirka 1,7 ton, stenmjöl 1,5, sand och naturgrus 0–8 1,6 ton (Snabbgrus, CRREX, NCC Sten). Lägg på 10 % för makadam och 15 % för bergkross och stenmjöl som ska packas. En storsäck om 1 000 kg rymmer ungefär 0,6–0,7 m³."}}, {"@type": "Question", "name": "Hur många löpmeter trall per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Trall 28×120 med 5–6 mm spalt ger cirka 8 löpmeter per m² (Svenskt Trä 8,33 utan spalt, Byggvaruguiden 7,94). Två trallskruv per bräda och regel ger cirka 30 skruv per m² vid regelavstånd c/c 600 – räknaren räknar geometriskt utifrån däckets mått."}}, {"@type": "Question", "name": "Hur mycket ytterpanel och spik per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Lockpanel 22×145 med lockläkt 22×45 kräver 6,7 löpmeter bottenbräda och 6,7 löpmeter lockläkt per m² (Svenskt Trä). Stående spontad 22×120 kräver 9,1 löpmeter per m², spontad 22×145 7,4. Spikläkt c/c 600 ger 1,7 löpmeter per m². Spikåtgången beror på hur många läkt eller reglar varje bräda korsar: lockpanel på c/c 600 ger cirka 33 spik per m², på c/c 400 cirka 50. Vindduk säljs på rulle 2,8 × 25 m (70 m²), vilket ger cirka 65 m² netto med 100 mm överlapp."}}, {"@type": "Question", "name": "Hur räknar man rullar underlagspapp?", "acceptedAnswer": {"@type": "Answer", "text": "Netto per rulle = (bredd − sidöverlapp) × (längd − ändöverlapp). En rulle 1 × 8 m underlagspapp med 100 mm sidöverlapp och 150 mm ändöverlapp täcker cirka 7 m². Allt som överlappar i montaget ska räknas med överlapp – det gäller papp, duk och vindskydd lika. Underlagsduk säljs ofta 1,5 × 50 m, svetsbar ytpapp 1 × 7,5 eller 1 × 10 m."}}, {"@type": "Question", "name": "Hur många m² isolering per paket?", "acceptedAnswer": {"@type": "Answer", "text": "Det varierar med tjocklek och fabrikat: Isover UNI-skiva 35 ger 12,99 m² per paket vid 45 mm men 3,25 m² vid 195 mm; Paroc eXtra 9,26 respektive 2,64; Rockwool Flexibatts 7,93 respektive 1,98. Räknaren använder ett snitt per tjocklek – siffran står alltid på etiketten. Lösull på vind räknas som yta × tjocklek; färdigblåst glasull väger cirka 22 kg/m³, stenull 30, cellulosa 35."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ståhle Digital", "item": "https://stahledigital.se/"}, {"@type": "ListItem", "position": 2, "name": "Verkstaden", "item": "https://stahledigital.se/verkstaden"}, {"@type": "ListItem", "position": 3, "name": "Materialräknaren", "item": "https://raknaren.stahledigital.se/"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "@id": "https://raknaren.stahledigital.se/#app", "name": "Materialräknaren", "alternateName": "Materialräknaren – Ståhle Digital", "url": "https://raknaren.stahledigital.se/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (PWA)", "inLanguage": "sv-SE", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "SEK"}, "description": "Gratis materialkalkylator för gipsvägg, tak och läkt, papp och duk, ytterpanel, färg, plintar, betongplatta, fyllnadsmassor, trall och isolering.", "featureList": ["Takpannor och nockpannor per m²", "Gipsskivor, reglar och skruv", "Färgåtgång", "Torrbetong och fabriksbetong", "Fyllnadsmassor i ton och storsäck", "Trall och trallskruv", "Ytterpanel, spik och vindduk", "Isolering och lösull", "Underlagspapp och duk med överlapp"], "author": {"@id": "https://stahledigital.se/#organization"}, "publisher": {"@id": "https://stahledigital.se/#organization"}, "image": "https://raknaren.stahledigital.se/og.png", "datePublished": "2026-09-13"}, {"@type": "Organization", "@id": "https://stahledigital.se/#organization", "name": "Ståhle Digital", "url": "https://stahledigital.se", "logo": "https://stahledigital.se/og.png", "address": {"@type": "PostalAddress", "addressLocality": "Växjö", "addressCountry": "SE"}}, {"@type": "FAQPage", "@id": "https://raknaren.stahledigital.se/#faq", "mainEntity": [{"@type": "Question", "name": "Hur många takpannor går det per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Det beror på pannan och läktavståndet. Tvåkupiga betongpannor som Benders Palema och BMI Jönåker ligger på cirka 9 pannor per m² vid maximalt läktavstånd 375 mm. Platta betongpannor som Benders Carisma kräver cirka 11,5 per m², enkupig betong (Exklusiv) 10,7, tvåkupigt tegel (Vittinge T11) 11,1 och enkupigt tegel (Vittinge E13) 13,3 per m². Lägg till 3–5 % spill. Pannor säljs normalt på pall om 240 eller halvpall om 120 – räknaren visar antal pallar direkt."}}, {"@type": "Question", "name": "Hur många nockpannor per meter?", "acceptedAnswer": {"@type": "Answer", "text": "Betongnockpannor är oftast 420 mm långa och ger cirka 2,8 nockpannor per löpmeter nock (Benders anger 2,4–2,8 beroende på montage, BMI 3). Nocktegel för Vittinge är 315 mm och ger 3,5 per meter."}}, {"@type": "Question", "name": "Vilket läktavstånd ska bärläkten ha?", "acceptedAnswer": {"@type": "Answer", "text": "Benders anger 310–375 mm för Palema och Exklusiv beroende på taklutning (brantare tak tillåter längre bygglängd), max 350 mm för Carisma. BMI Jönåker 300–375 mm och Vittinge 375 mm. Ströläkt monteras på c/c 600 mm, läkt 25×48 enligt nyare anvisningar. Bärläkt i löpmeter = takyta ÷ läktavstånd."}}, {"@type": "Question", "name": "Hur många gipsskruv går det per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Gyprocs monteringsanvisning ger 35 skruv per skiva 1200×2400 vid c/c 600 och 44 vid c/c 450, alltså 12–15 skruv per m². Byggvaruhandelns tumregel är 20 per m². Räknaren använder 17 skruv per m² och lager som snitt, vilket täcker kapade skivor och kanter. En gipsskiva 1200×2500 är 3 m², 900×2500 är 2,25 m²."}}, {"@type": "Question", "name": "Hur många reglar behövs till en gipsvägg?", "acceptedAnswer": {"@type": "Answer", "text": "Antal stående reglar = vägglängd ÷ regelavstånd, avrundat uppåt, + 1 (regel i båda ändar och högst c/c emellan), plus syll och hammarband (2 × vägglängd). En 6,4 m lång vägg på c/c 450 kräver 16 stående reglar. Dörrar, hörn och skivskarvar kan kräva någon extra. Räknaren låter dig välja uppbyggnad per sida – ett eller två lager gips, OSB/plywood, eller kombinationer – och ger antal skivor per sort."}}, {"@type": "Question", "name": "Hur mycket brandfog eller akustikfog går det till en gipsvägg?", "acceptedAnswer": {"@type": "Answer", "text": "Brand- och ljudväggar fogas mot golv, tak och anslutande väggar i varje skivlag enligt Gyprocs anvisning. Fogåtgången är därför väggens omkrets (2 × längd + 2 × höjd) gånger antalet skivlag som ska fogas. En 300 ml-patron räcker till cirka 10 löpmeter vid 6 mm sträng. En 6,4 × 2,5 m brandvägg med tre lager gips per sida (sex skivlag) kräver knappt 110 lpm, alltså 12 patroner inklusive 10 % marginal. Brandväggar ska byggas exakt enligt fabrikantens typgodkännande – antal lager, skivtyp och fog hör ihop med brandklassen."}}, {"@type": "Question", "name": "Hur mycket färg går det åt per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Väggfärg inomhus täcker 6–10 m² per liter och strykning: Alcro Milltex 7 och Beckers Scotte 7 anger 6–8, Jotun Lady 9, Nordsjö Ambiance 8–10. Räknaren använder 7 m²/l och två strykningar. Fasadfärg på sågat virke drar mer (6–8 m²/l, Beckers Perfekt Fasad) än på hyvlat (10–12 m²/l, Jotun Demidekk). Dra av dörrar och fönster från väggytan."}}, {"@type": "Question", "name": "Hur många säckar torrbetong per kubikmeter?", "acceptedAnswer": {"@type": "Answer", "text": "En säck grovbetong på 25 kg ger cirka 12,5–13 liter färdig betong enligt Finja, Weber och Byggmax – det vill säga ungefär 80 säckar eller 2 ton per m³. Över cirka 1 m³ är fabriksbetong nästan alltid billigare; räkna med minsta debitering runt 4 m³ eller småleveranstillägg. Till en plint Ø200 × 900 mm går det cirka 28 liter, alltså 2–3 säckar."}}, {"@type": "Question", "name": "Hur mycket betong till en platta på mark?", "acceptedAnswer": {"@type": "Answer", "text": "Volym = yta × tjocklek: en 40 m² platta med 100 mm betong är 4 m³, plus 5–10 % spill. Ett armeringsnät 5,0 × 2,3 m täcker cirka 9,7 m² med 1,5 rutors överlapp. Cellplast S100 säljs i skivor 600 × 1200 mm (0,72 m², 3,6 m² per paket) och läggs normalt i 2–3 lager à 100 mm under en bostadsplatta."}}, {"@type": "Question", "name": "Hur mycket väger en kubik makadam eller bergkross?", "acceptedAnswer": {"@type": "Answer", "text": "Makadam 8–16 och 16–32 väger cirka 1,4 ton per m³ löst, bergkross 0–32 cirka 1,7 ton, stenmjöl 1,5, sand och naturgrus 0–8 1,6 ton (Snabbgrus, CRREX, NCC Sten). Lägg på 10 % för makadam och 15 % för bergkross och stenmjöl som ska packas. En storsäck om 1 000 kg rymmer ungefär 0,6–0,7 m³."}}, {"@type": "Question", "name": "Hur många löpmeter trall per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Trall 28×120 med 5–6 mm spalt ger cirka 8 löpmeter per m² (Svenskt Trä 8,33 utan spalt, Byggvaruguiden 7,94). Två trallskruv per bräda och regel ger cirka 30 skruv per m² vid regelavstånd c/c 600 – räknaren räknar geometriskt utifrån däckets mått."}}, {"@type": "Question", "name": "Hur mycket ytterpanel och spik per kvadratmeter?", "acceptedAnswer": {"@type": "Answer", "text": "Lockpanel 22×145 med lockläkt 22×45 kräver 6,7 löpmeter bottenbräda och 6,7 löpmeter lockläkt per m² (Svenskt Trä). Stående spontad 22×120 kräver 9,1 löpmeter per m², spontad 22×145 7,4. Spikläkt c/c 600 ger 1,7 löpmeter per m². Spikåtgången beror på hur många läkt eller reglar varje bräda korsar: lockpanel på c/c 600 ger cirka 33 spik per m², på c/c 400 cirka 50. Vindduk säljs på rulle 2,8 × 25 m (70 m²), vilket ger cirka 65 m² netto med 100 mm överlapp."}}, {"@type": "Question", "name": "Hur räknar man rullar underlagspapp?", "acceptedAnswer": {"@type": "Answer", "text": "Netto per rulle = (bredd − sidöverlapp) × (längd − ändöverlapp). En rulle 1 × 8 m underlagspapp med 100 mm sidöverlapp och 150 mm ändöverlapp täcker cirka 7 m². Allt som överlappar i montaget ska räknas med överlapp – det gäller papp, duk och vindskydd lika. Underlagsduk säljs ofta 1,5 × 50 m, svetsbar ytpapp 1 × 7,5 eller 1 × 10 m."}}, {"@type": "Question", "name": "Hur många m² isolering per paket?", "acceptedAnswer": {"@type": "Answer", "text": "Det varierar med tjocklek och fabrikat: Isover UNI-skiva 35 ger 12,99 m² per paket vid 45 mm men 3,25 m² vid 195 mm; Paroc eXtra 9,26 respektive 2,64; Rockwool Flexibatts 7,93 respektive 1,98. Räknaren använder ett snitt per tjocklek – siffran står alltid på etiketten. Lösull på vind räknas som yta × tjocklek; färdigblåst glasull väger cirka 22 kg/m³, stenull 30, cellulosa 35."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ståhle Digital", "item": "https://stahledigital.se/"}, {"@type": "ListItem", "position": 2, "name": "Verkstaden", "item": "https://stahledigital.se/verkstaden"}, {"@type": "ListItem", "position": 3, "name": "Materialräknaren", "item": "https://raknaren.stahledigital.se/"}]}]}</script>
 <script>
 if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js',{scope:'/'}).catch(()=>{});});}
 </script>

@@ -129,6 +129,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="g_b">Sida B</label><div class="in"><select id="g_b">
       <option value="1|0" selected>1 gips</option><option value="2|0">2 gips</option><option value="0|1">OSB / plywood</option><option value="1|1">OSB + 1 gips</option><option value="2|1">OSB + 2 gips</option><option value="0|0">Inget</option>
     </select></div></div>
+    <div class="f"><label for="g_spill">Spill</label><div class="in"><select id="g_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
@@ -137,7 +138,6 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="g_osb">OSB/plywood-format</label><div class="in"><select id="g_osb"><option value="3" selected>1200 × 2500</option><option value="2.98">1220 × 2440</option><option value="3.24">1200 × 2700</option></select></div></div>
     <div class="f"><label for="g_skruv">Gipsskruv per m² och lager</label><div class="in"><input id="g_skruv" type="number" value="17"><span>st</span></div></div>
     <div class="f"><label for="g_oskruv">Träskruv OSB per m²</label><div class="in"><input id="g_oskruv" type="number" value="15"><span>st</span></div></div>
-    <div class="f"><label for="g_spill">Spill</label><div class="in"><input id="g_spill" type="number" value="10"><span>%</span></div></div>
   </div></details>
   <div class="res"><h3>Att hämta</h3><div class="rows" id="g_out"></div>
     <div class="actions"><button class="act" data-copy="g_out">Kopiera listan</button><button class="act ghost" data-share="g_out">Dela</button></div>
@@ -161,7 +161,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     </select></div></div>
     <div class="f"><label for="t_yta">Takyta (båda fallen)</label><div class="in"><input id="t_yta" type="number" step="1" value="140"><span>m²</span></div></div>
     <div class="f"><label for="t_nock">Nocklängd</label><div class="in"><input id="t_nock" type="number" step="0.1" value="11"><span>m</span></div></div>
-    <div class="f"><label for="t_spill">Spill</label><div class="in"><select id="t_spill"><option value="5" selected>5 % – enkelt sadeltak</option><option value="10">10 % – vinklar, kupor</option><option value="15">15 % – valmat tak</option><option value="20">20 % – komplext tak</option></select></div></div>
+    <div class="f"><label for="t_spill">Spill</label><div class="in"><select id="t_spill"><option value="0">0 % – räkna exakt</option><option value="5" selected>5 % – enkelt sadeltak</option><option value="10">10 % – vinklar, kupor</option><option value="15">15 % – valmat tak</option><option value="20">20 % – komplext tak</option></select></div></div>
     <div class="f"><label for="t_und">Underlag</label><div class="in"><select id="t_und">
       <option value="rs" selected>Råspont + underlagspapp</option><option value="duk">Underlagsduk på läkt 45×70</option><option value="ing">Räkna inte underlag</option>
     </select></div></div>
@@ -205,7 +205,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       <option value="0|0|100|150|u">Egen storlek</option>
     </select></div></div>
     <div class="f"><label for="pp_yta">Takyta</label><div class="in"><input id="pp_yta" type="number" step="1" value="140"><span>m²</span></div></div>
-    <div class="f"><label for="pp_spill">Spill</label><div class="in"><select id="pp_spill"><option value="5" selected>5 % – enkelt sadeltak</option><option value="10">10 % – vinklar, kupor</option><option value="15">15 % – valmat tak</option><option value="20">20 % – komplext tak</option></select></div></div>
+    <div class="f"><label for="pp_spill">Spill</label><div class="in"><select id="pp_spill"><option value="0">0 % – räkna exakt</option><option value="5" selected>5 % – enkelt sadeltak</option><option value="10">10 % – vinklar, kupor</option><option value="15">15 % – valmat tak</option><option value="20">20 % – komplext tak</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
@@ -241,12 +241,12 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="p_rikt">Panelriktning</label><div class="in"><select id="p_rikt"><option value="s" selected>Stående panel</option><option value="l">Liggande panel</option></select></div></div>
     <div class="f"><label for="p_lakt" id="p_lakt_l">Spikläkt c/c</label><div class="in"><select id="p_lakt"><option value="600" selected>c/c 600</option><option value="450">c/c 450</option><option value="400">c/c 400</option><option value="300">c/c 300</option></select></div></div>
     <div class="f"><label for="p_vind">Vindskydd</label><div class="in"><select id="p_vind"><option value="65" selected>Vindduk 2,8 × 25 m</option><option value="3.24">Vindskiva 1200 × 2700</option><option value="0">Inget</option></select></div></div>
+    <div class="f"><label for="p_spill">Spill</label><div class="in"><select id="p_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
     <div class="f"><label for="p_nb">Spik per korsning, bottenbräda</label><div class="in"><input id="p_nb" type="number" value="1"><span>st</span></div></div>
     <div class="f"><label for="p_nl">Spik per korsning, lock</label><div class="in"><input id="p_nl" type="number" value="2"><span>st</span></div></div>
-    <div class="f"><label for="p_spill">Spill</label><div class="in"><input id="p_spill" type="number" value="10"><span>%</span></div></div>
   </div></details>
   <div class="res"><h3>Att hämta</h3><div class="rows" id="p_out"></div>
     <div class="actions"><button class="act" data-copy="p_out">Kopiera listan</button><button class="act ghost" data-share="p_out">Dela</button></div>
@@ -266,6 +266,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="f_h">Höjd</label><div class="in"><input id="f_h" type="number" step="0.1" value="2.4"><span>m</span></div></div>
     <div class="f"><label for="f_opp">Dörrar och fönster</label><div class="in"><input id="f_opp" type="number" step="0.1" value="4"><span>m²</span></div></div>
     <div class="f"><label for="f_str">Strykningar</label><div class="in"><select id="f_str"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div></div>
+    <div class="f"><label for="f_spill">Spill</label><div class="in"><select id="f_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
@@ -290,10 +291,10 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="pl_t">Tjocklek</label><div class="in"><select id="pl_t"><option value="80">80 mm</option><option value="100" selected>100 mm</option><option value="120">120 mm</option><option value="150">150 mm</option><option value="200">200 mm</option></select></div></div>
     <div class="f"><label for="pl_cell">Cellplast, lager à 100 mm</label><div class="in"><select id="pl_cell"><option value="0">Ingen</option><option value="1">1 lager</option><option value="2" selected>2 lager</option><option value="3">3 lager</option></select></div></div>
     <div class="f"><label for="pl_nat">Armeringsnät</label><div class="in"><select id="pl_nat"><option value="9.7" selected>Nät 5,0 × 2,3 m</option><option value="0">Nej</option></select></div></div>
+    <div class="f"><label for="pl_spill">Spill</label><div class="in"><select id="pl_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
-    <div class="f"><label for="pl_spill">Spill betong</label><div class="in"><input id="pl_spill" type="number" value="7"><span>%</span></div></div>
     <div class="f"><label for="pl_sack">Säckar torrbetong per m³</label><div class="in"><input id="pl_sack" type="number" value="80"><span>st</span></div></div>
   </div></details>
   <div class="sub">Plintar</div>
@@ -305,7 +306,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   </div>
   <div class="res"><h3>Att hämta</h3><div class="rows" id="pl_out"></div>
     <div class="actions"><button class="act" data-copy="pl_out">Kopiera listan</button><button class="act ghost" data-share="pl_out">Dela</button></div>
-    <p class="note">Plintar: 10 % extra inräknat, Finja/Weber/Byggmax anger 12,5–13 l per 25 kg-säck. Över ca 1 m³ är fabriksbetong nästan alltid billigare än säckar – räkna med minsta debitering runt 4 m³ eller småleveranstillägg. Nät räknat med 1,5 rutors överlapp (≈ 9,7 m² täckyta per nät).</p>
+    <p class="note">Plintar: Finja/Weber/Byggmax anger 12,5–13 l per 25 kg-säck. Över ca 1 m³ är fabriksbetong nästan alltid billigare än säckar – räkna med minsta debitering runt 4 m³ eller småleveranstillägg. Nät räknat med 1,5 rutors överlapp (≈ 9,7 m² täckyta per nät).</p>
   </div>
 </div>
 </section>
@@ -349,11 +350,11 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="tr_b">Däckbredd</label><div class="in"><input id="tr_b" type="number" step="0.1" value="4"><span>m</span></div></div>
     <div class="f"><label for="tr_bb">Brädbredd</label><div class="in"><input id="tr_bb" type="number" step="1" value="120"><span>mm</span></div></div>
     <div class="f"><label for="tr_sp">Spalt</label><div class="in"><input id="tr_sp" type="number" step="1" value="6"><span>mm</span></div></div>
+    <div class="f"><label for="tr_spill">Spill</label><div class="in"><select id="tr_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <details><summary>Förval</summary>
   <div class="grid">
     <div class="f"><label for="tr_cc">Regelavstånd</label><div class="in"><input id="tr_cc" type="number" step="50" value="600"><span>mm</span></div></div>
-    <div class="f"><label for="tr_spill">Spill</label><div class="in"><input id="tr_spill" type="number" value="10"><span>%</span></div></div>
   </div></details>
   <div class="res"><h3>Att hämta</h3><div class="rows" id="tr_out"></div>
     <div class="actions"><button class="act" data-copy="tr_out">Kopiera listan</button><button class="act ghost" data-share="tr_out">Dela</button></div>
@@ -374,7 +375,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       <option value="45|10">45 mm</option><option value="70|7">70 mm</option><option value="95|5.3">95 mm</option><option value="120|4.2">120 mm</option><option value="145|3.3" selected>145 mm</option><option value="170|2.6">170 mm</option><option value="195|2.6">195 mm</option>
     </select></div></div>
     <div class="f"><label for="i_pak">m² per paket</label><div class="in"><input id="i_pak" type="number" step="0.1" value="3.3"><span>m²</span></div></div>
-    <div class="f"><label for="i_spill">Spill</label><div class="in"><input id="i_spill" type="number" value="5"><span>%</span></div></div>
+    <div class="f"><label for="i_spill">Spill</label><div class="in"><select id="i_spill"><option value="0">0 %</option><option value="5" selected>5 %</option><option value="10">10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <div class="sub">Lösull på vind</div>
   <div class="grid">
@@ -409,7 +410,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       <option value="panel|0.132|0">Spontad panel 14×145 (täck 132)</option>
     </select></div></div>
     <div class="f"><label for="it_cc">Reglar/glespanel c/c</label><div class="in"><select id="it_cc"><option value="300">c/c 300</option><option value="400" selected>c/c 400</option><option value="600">c/c 600</option></select></div></div>
-    <div class="f"><label for="it_spill">Spill</label><div class="in"><input id="it_spill" type="number" value="10"><span>%</span></div></div>
+    <div class="f"><label for="it_spill">Spill</label><div class="in"><select id="it_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <div class="sub">Golv</div>
   <div class="grid">
@@ -424,7 +425,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       <option value="pak|2.2|0">Laminat / parkett, paket 2,2 m²</option>
     </select></div></div>
     <div class="f"><label for="go_cc">Golvbjälkar c/c</label><div class="in"><select id="go_cc"><option value="400">c/c 400</option><option value="600" selected>c/c 600</option></select></div></div>
-    <div class="f"><label for="go_spill">Spill</label><div class="in"><input id="go_spill" type="number" value="8"><span>%</span></div></div>
+    <div class="f"><label for="go_spill">Spill</label><div class="in"><select id="go_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
   </div>
   <div class="res"><h3>Att hämta</h3><div class="rows" id="in_out"></div>
     <div class="actions"><button class="act" data-copy="in_out">Kopiera listan</button><button class="act ghost" data-share="in_out">Dela</button></div>
@@ -575,8 +576,8 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     },
     farg(){
       const A=Math.max(0,num('f_omk')*num('f_h')-num('f_opp')),str=num('f_str'),tack=num('f_tack'),burk=num('f_burk');
-      const liter=A*str/tack*1.1;
-      return [row('Yta att måla',Math.round(A*10)/10,'m²','öppningar avdragna'),row('Färg',Math.round(liter*10)/10,'l',`${str} strykningar, 10 % extra`),row('Burkar',Math.ceil(liter/burk),'st',`à ${fmt(burk)} l`)];
+      const fsp=1+num('f_spill')/100;const liter=A*str/tack*fsp;
+      return [row('Yta att måla',Math.round(A*10)/10,'m²','öppningar avdragna'),row('Färg',Math.round(liter*10)/10,'l',`${str} strykningar + ${num('f_spill')} % spill`),row('Burkar',Math.ceil(liter/burk),'st',`à ${fmt(burk)} l`)];
     },
     platta(){
       const A=num('pl_yta'),t=num('pl_t')/1000,cell=num('pl_cell'),nat=num('pl_nat'),sp=1+num('pl_spill')/100,sack=num('pl_sack');
@@ -585,8 +586,8 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       if(nat)out.push(row('Armeringsnät',Math.ceil(A/nat),'st','5,0 × 2,3 m, överlapp inräknat'));
       if(cell)out.push(row('Cellplast 100 mm',Math.ceil(A*cell*1.05/0.72),'skivor',`${Math.ceil(A*cell*1.05/3.6)} paket à 3,6 m², ${cell} lager`));
       out.unshift(hd('Platta'));
-      const n=num('b_n'),d=num('b_d')/1000,h=num('b_dj')/1000,psack=num('b_sack');const vol=n*Math.PI*(d/2)**2*h*1000*1.1;
-      out.push(hd('Plintar'),row('Volym',Math.round(vol/1.1)/1000,'m³',`${n} × Ø${num('b_d')} × ${num('b_dj')} mm`),row('Betong att köpa',Math.ceil(vol),'l','inkl. 10 % extra'),row('Torrbetong 25 kg',Math.ceil(vol/psack),'säckar',`${fmt(psack)} l per säck`));
+      const n=num('b_n'),d=num('b_d')/1000,h=num('b_dj')/1000,psack=num('b_sack');const vol=n*Math.PI*(d/2)**2*h*1000*sp;
+      out.push(hd('Plintar'),row('Volym',Math.round(vol/sp)/1000,'m³',`${n} × Ø${num('b_d')} × ${num('b_dj')} mm`),row('Betong att köpa',Math.ceil(vol),'l',`+ ${num('pl_spill')} % spill`),row('Torrbetong 25 kg',Math.ceil(vol/psack),'säckar',`${fmt(psack)} l per säck`));
       return out;
     },
     fyll(){

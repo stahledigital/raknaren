@@ -305,11 +305,13 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="b_n">Antal plintar</label><div class="in"><input id="b_n" type="number" value="9"><span>st</span></div></div>
     <div class="f"><label for="b_d">Diameter</label><div class="in"><input id="b_d" type="number" step="10" value="200"><span>mm</span></div></div>
     <div class="f"><label for="b_dj">Djup</label><div class="in"><input id="b_dj" type="number" step="50" value="900"><span>mm</span></div></div>
+    <div class="f"><label for="b_in">Gjuts ner i plinten</label><div class="in"><select id="b_in"><option value="0" selected>Stolpsko / järn (räknas inte bort)</option><option value="45">Stolpe 45 × 45</option><option value="70">Stolpe 70 × 70</option><option value="95">Stolpe 95 × 95</option><option value="115">Stolpe 115 × 115</option><option value="145">Stolpe 145 × 145</option><option value="r75">Rör Ø 75</option><option value="r110">Rör Ø 110</option></select></div></div>
+    <div class="f"><label for="b_ind">Ingjutningsdjup</label><div class="in"><input id="b_ind" type="number" step="50" value="500"><span>mm</span></div></div>
     <div class="f"><label for="b_sack">Betong per 25 kg säck</label><div class="in"><input id="b_sack" type="number" step="0.5" value="12.5"><span>l</span></div></div>
   </div>
   <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="pl_ctx"></p><div class="rows" id="pl_out"></div>
     <div class="actions"><button class="act" data-copy="pl_out">Kopiera listan</button><button class="act ghost" data-share="pl_out">Dela</button></div>
-    <p class="note">Plintar: Finja/Weber/Byggmax anger 12,5–13 l per 25 kg-säck. Över ca 1 m³ är fabriksbetong nästan alltid billigare än säckar – räkna med minsta debitering runt 4 m³ eller småleveranstillägg. Nät räknat med 1,5 rutors överlapp (≈ 9,7 m² täckyta per nät).</p>
+    <p class="note">Plintar: Finja/Weber/Byggmax anger 12,5–13 l per 25 kg-säck. Gjuter du ner stolpen räknas dess volym bort (en 115 × 115 stolpe 500 mm ner tar 6,6 l per plint); stolpsko och armeringsjärn är försumbara. Över ca 1 m³ är fabriksbetong nästan alltid billigare än säckar – räkna med minsta debitering runt 4 m³ eller småleveranstillägg. Nät räknat med 1,5 rutors överlapp (≈ 9,7 m² täckyta per nät).</p>
   </div>
 </div>
 </section>
@@ -625,8 +627,14 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       if(A>0){if(nat)out.push(row('Armeringsnät',Math.ceil(A/nat),'st','5,0 × 2,3 m, överlapp inräknat'));
       if(cell)out.push(row('Cellplast 100 mm',Math.ceil(A*cell*1.05/0.72),'skivor',`${Math.ceil(A*cell*1.05/3.6)} paket à 3,6 m², ${cell} lager`));
       out.unshift(hd('Platta'));}
-      const d=num('b_d')/1000,h=num('b_dj')/1000,psack=num('b_sack');const vol=n*Math.PI*(d/2)**2*h*1000*sp;
-      if(n>0)out.push(hd('Plintar'),row('Volym',Math.round(vol/sp)/1000,'m³',`${n} × Ø${num('b_d')} × ${num('b_dj')} mm`),row('Betong att köpa',Math.ceil(vol),'l',`+ ${num('pl_spill')} % spill`),row('Torrbetong 25 kg',Math.ceil(vol/psack),'säckar',`${fmt(psack)} l per säck`));
+      const d=num('b_d')/1000,h=num('b_dj')/1000,psack=num('b_sack');const brutto=n*Math.PI*(d/2)**2*h*1000;
+      const inv=$('b_in').value, ind=Math.min(h,num('b_ind')/1000);
+      let avdrag=0,inTxt='';
+      if(inv!=='0'&&ind>0){const area=inv.startsWith('r')?Math.PI*(parseFloat(inv.slice(1))/2000)**2:(+inv/1000)**2;avdrag=n*area*ind*1000;inTxt=`${inv.startsWith('r')?'rör Ø '+inv.slice(1):'stolpe '+inv+' × '+inv} ${Math.round(ind*1000)} mm ner`;}
+      const vol=(brutto-avdrag)*sp;
+      if(n>0){out.push(hd('Plintar'),row('Volym',Math.round(brutto)/1000,'m³',`${n} × Ø${num('b_d')} × ${num('b_dj')} mm`));
+        if(avdrag>0)out.push(row('Avgår för det som gjuts ner',-Math.round(avdrag),'l',inTxt));
+        out.push(row('Betong att köpa',Math.ceil(vol),'l',`${avdrag>0?'netto ':''}+ ${num('pl_spill')} % spill`),row('Torrbetong 25 kg',Math.ceil(vol/psack),'säckar',`${fmt(psack)} l per säck`));}
       return out;
     },
     fyll(){

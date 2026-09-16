@@ -124,7 +124,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 <section id="gips" data-active>
 <div class="calc">
   <h2>Innervägg</h2>
-  <p class="lead">Skivor, reglar, skruv och fog för en regelvägg. Välj uppbyggnad per sida – 1–3 lager gips, OSB/plywood eller kombination – och akustik- eller brandfog för ljud- och brandväggar. Skiv- och regellängd väljs efter vägghöjden och står i listan.</p>
+  <p class="lead">Skivor, reglar, skruv och fog för en regelvägg. Välj uppbyggnad per sida – 1–3 lager gips, OSB/plywood eller kombination – och akustik- eller brandfog för ljud- och brandväggar. Skiv- och regellängd väljs efter vägghöjden och står i listan. Vägg med hörn: ange total längd och antal hörn under Fler alternativ, liksom dörrar och fönster.</p>
   <div class="grid">
     <div class="f"><label for="g_l">Vägglängd</label><div class="in"><input id="g_l" type="number" step="0.1" value="6.4"><span>m</span></div></div>
     <div class="f"><label for="g_h">Vägghöjd</label><div class="in"><input id="g_h" type="number" step="0.1" value="2.5"><span>m</span></div></div>
@@ -134,6 +134,9 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="g_b">Sida B</label><div class="in"><select id="g_b">
       <option value="1|0" selected>1 gips</option><option value="2|0">2 gips</option><option value="3|0">3 gips (brand)</option><option value="0|1">OSB / plywood</option><option value="1|1">OSB + 1 gips</option><option value="2|1">OSB + 2 gips</option><option value="3|1">OSB + 3 gips</option><option value="0|0">Inget</option>
     </select></div></div>
+    <div class="f" data-more><label for="g_horn">Hörn / svängar</label><div class="in"><input id="g_horn" type="number" min="0" value="0"><span>st</span></div></div>
+    <div class="f" data-more><label for="g_dorr">Dörrar (9 × 21)</label><div class="in"><input id="g_dorr" type="number" min="0" value="0"><span>st</span></div></div>
+    <div class="f" data-more><label for="g_fon">Fönster (12 × 12)</label><div class="in"><input id="g_fon" type="number" min="0" value="0"><span>st</span></div></div>
     <div class="f" data-more><label for="g_cc">Regelavstånd</label><div class="in"><select id="g_cc"><option value="300">c/c 300</option><option value="400">c/c 400</option><option value="450" selected>c/c 450</option><option value="600">c/c 600</option></select></div></div>
     <div class="f" data-more><label for="g_fog">Fog</label><div class="in"><select id="g_fog"><option value="" selected>Ingen</option><option value="Akustikfog">Akustikfog</option><option value="Brandfog">Brandfog</option></select></div></div>
     <div class="f" data-more><label for="g_spill">Spill</label><div class="in"><select id="g_spill"><option value="0">0 %</option><option value="5">5 %</option><option value="10" selected>10 %</option><option value="15">15 %</option><option value="20">20 %</option></select></div></div>
@@ -150,7 +153,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   </div></details>
   <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="g_ctx"></p><div class="rows" id="g_out"></div>
     <div class="actions"><button class="act" data-copy="g_out">Kopiera listan</button><button class="act ghost" data-share="g_out">Dela</button></div>
-    <p class="note">Skruv: Gyproc anger 12–15 st/m², XL-Bygg 20 – snittet 17 täcker kapade skivor. Reglar: regel i båda ändar med högst c/c emellan (6,4 m på c/c 450 = 16 st), samt syll och hammarband. Stående regel räknas i närmaste standardlängd över vägghöjden (2,4 / 2,7 / 3,0 / 3,6 / 4,2 / 4,8 / 5,4 m), syll och hammarband i längsta praktiska längd. Skivlängd väljs så att raderna på höjden blir så få som möjligt – 2,5 m vägg får 2500-skiva, 2,7 m får 2700. Dörrar, hörn och skivskarvar kan kräva någon extra regel. Fog: sträng mot golv, tak och anslutande väggar i varje skivlag (Gyproc), ca 10 lpm per 300 ml-patron vid 6 mm sträng, +10 % – brandväggar kräver godkänd brandfog och rätt antal lager enligt fabrikantens typgodkännande.</p>
+    <p class="note">Skruv: Gyproc anger 12–15 st/m², XL-Bygg 20 – snittet 17 täcker kapade skivor. Reglar: regel i båda ändar med högst c/c emellan (6,4 m på c/c 450 = 16 st), samt syll och hammarband. Stående regel räknas i närmaste standardlängd över vägghöjden (2,4 / 2,7 / 3,0 / 3,6 / 4,2 / 4,8 / 5,4 m), syll och hammarband i längsta praktiska längd. Skivlängd väljs så att raderna på höjden blir så få som möjligt – 2,5 m vägg får 2500-skiva, 2,7 m får 2700. Hörn och öppningar: 2 extra reglar per hörn, dörr (9 × 21) och fönster (12 × 12), kortling 1 m per dörr och 2 × 1,3 m per fönster; öppningarnas yta dras av från skivor och skruv, avrundat till hela skivor. Andra dörr- och fönstermått – justera med spill. Fog: sträng mot golv, tak och anslutande väggar i varje skivlag (Gyproc), ca 10 lpm per 300 ml-patron vid 6 mm sträng, +10 % – brandväggar kräver godkänd brandfog och rätt antal lager enligt fabrikantens typgodkännande.</p>
   </div>
 </div>
 </section>
@@ -529,7 +532,9 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       const L=num('g_l'),H=num('g_h'),cc=num('g_cc')/1000,spm=num('g_skruv'),ospm=num('g_oskruv'),sp=1+num('g_spill')/100;
       if(!(L>0&&H>0))return [msg('Ange vägglängd och vägghöjd större än 0.')];
       const A=L*H, gipsL=sel('g_a',0)+sel('g_b',0), osbL=sel('g_a',1)+sel('g_b',1);
-      const gipsArea=A*gipsL, osbArea=A*osbL;
+      const horn=Math.max(0,num('g_horn')), dorr=Math.max(0,num('g_dorr')), fon=Math.max(0,num('g_fon'));
+      const openA=dorr*0.9*2.1+fon*1.2*1.2, An=Math.max(0,A-openA);
+      const gipsArea=An*gipsL, osbArea=An*osbL;
       // skivor: hela rader på höjden + remsor kapade ur skivor för resten (som man beställer vid disken)
       const boards=(w,l)=>{const cols=Math.ceil(L/w-1e-9);let full=Math.floor(H/l+1e-9),rest=Math.round((H-full*l)*100)/100,extra=0,kap=0;if(full===0){full=1;kap=Math.round((l-H)*100)/100;rest=0;}else if(rest>0.01){extra=Math.ceil(cols/Math.max(1,Math.floor(l/rest+1e-9)));}return {n:cols*full+extra,cols,full,rest,extra,kap,w,l};};
       const pickLen=(lens)=>{let best=null;for(const l of lens){const b=boards(1.2,l);const waste=b.n*1.2*l-L*H;if(!best||b.n<best.b.n||(b.n===best.b.n&&waste<best.waste))best={b,waste};}return best.b;};
@@ -540,16 +545,19 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       const [rdim,rkind]=$('g_regel').value.split('|'), steel=rkind==='s';
       const lens=steel?[2.5,2.75,3,3.5,4,4.5,5]:[2.4,2.7,3,3.6,4.2,4.8,5.4];
       const rl=lens.find(l=>l>=H-1e-9)||lens[lens.length-1], skarv=rl<H-1e-9;
-      const reglar=studs(L,cc);
+      const extraReg=2*horn+2*dorr+2*fon, kortM=dorr*1.0+fon*2*1.3;
+      const reglar=studs(L,cc)+extraReg;
       const runLen=steel?[3,4]:[2.4,2.7,3,3.6,4.2,4.8,5.4]; const maxRun=runLen[runLen.length-1];
       const nRun=Math.ceil(L/maxRun-1e-9), pl=runLen.find(l=>l>=L/nRun-1e-9)||maxRun, runPcs=2*nRun;
-      const regelM=reglar*rl+runPcs*pl;
-      const out=[row('Väggyta',Math.round(A*10)/10,'m²',`${fmt(L)} × ${fmt(H)} m, en sida`)];
-      if(gipsL)out.push(row(`Gipsskivor ${Math.round(gb.w*1000)} × ${Math.round(gb.l*1000)}`,Math.ceil(gb.n*gipsL*sp),'st',`${gipsL} lager × ${gb.n} skivor (${bTxt(gb)}) + spill`));
-      if(osbL)out.push(row(`OSB / plywood ${Math.round(ob.w*1000)} × ${Math.round(ob.l*1000)}`,Math.ceil(ob.n*osbL*sp),'st',`${osbL} lager × ${ob.n} skivor (${bTxt(ob)}) + spill`));
-      out.push(row(steel?`Stålregel ${rdim}`:`Reglar ${rdim}`,reglar,'st',`stående à ${fmt(rl)} m, c/c ${num('g_cc')}${skarv?' – längre än standardlängd, skarvas':''}`),
+      const regelM=reglar*rl+runPcs*pl+kortM;
+      const openTxt=(dorr?`${dorr} dörr${dorr>1?'ar':''}`:'')+(dorr&&fon?', ':'')+(fon?`${fon} fönster`:'');
+      const out=[row('Väggyta',Math.round(An*10)/10,'m²',`${fmt(L)} × ${fmt(H)} m, en sida${openA?` – ${fmt(Math.round(openA*10)/10)} m² öppningar (${openTxt}) avdragna`:''}${horn?` · ${horn} hörn`:''}`)];
+      const openB=b=>Math.round(openA/(b.w*b.l));
+      if(gipsL)out.push(row(`Gipsskivor ${Math.round(gb.w*1000)} × ${Math.round(gb.l*1000)}`,Math.ceil(Math.max(0,gb.n-openB(gb))*gipsL*sp),'st',`${gipsL} lager × ${Math.max(0,gb.n-openB(gb))} skivor (${bTxt(gb)}${openB(gb)?`, −${openB(gb)} för öppningar`:''}) + spill`));
+      if(osbL)out.push(row(`OSB / plywood ${Math.round(ob.w*1000)} × ${Math.round(ob.l*1000)}`,Math.ceil(Math.max(0,ob.n-openB(ob))*osbL*sp),'st',`${osbL} lager × ${Math.max(0,ob.n-openB(ob))} skivor (${bTxt(ob)}${openB(ob)?`, −${openB(ob)} för öppningar`:''}) + spill`));
+      out.push(row(steel?`Stålregel ${rdim}`:`Reglar ${rdim}`,reglar,'st',`stående à ${fmt(rl)} m, c/c ${num('g_cc')}${extraReg?` inkl. ${extraReg} extra vid hörn/öppningar`:''}${skarv?' – längre än standardlängd, skarvas':''}`),
                row(steel?`Skena ${rdim.replace('R','SK')}`:`Syll + hammarband ${rdim}`,runPcs,'st',`à ${fmt(pl)} m (2 × ${fmt(L)} m)`),
-               row('Regel totalt',Math.ceil(regelM),'lpm',`${reglar} × ${fmt(rl)} + ${runPcs} × ${fmt(pl)} m`));
+               row('Regel totalt',Math.ceil(regelM),'lpm',`${reglar} × ${fmt(rl)} + ${runPcs} × ${fmt(pl)} m${kortM?` + ${fmt(Math.round(kortM*10)/10)} m kortlingar`:''}`));
       if(gipsL)out.push(row('Gipsskruv',up(gipsArea*spm*sp,50),'st','avrundat till 50'));
       if(osbL)out.push(row('Träskruv till OSB',up(osbArea*ospm*sp,50),'st','avrundat till 50'));
       const fog=document.getElementById('g_fog').value;

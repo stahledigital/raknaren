@@ -146,14 +146,14 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     <div class="f"><label for="g_regel">Regeldimension</label><div class="in"><select id="g_regel"><option value="45×70|w" selected>Trä 45 × 70</option><option value="45×95|w">Trä 45 × 95</option><option value="45×120|w">Trä 45 × 120</option><option value="R70|s">Stålregel 70</option><option value="R95|s">Stålregel 95</option></select></div></div>
     <div class="f"><label for="g_skiva">Skivformat</label><div class="in"><select id="g_skiva"><option value="auto" selected>Auto efter höjd (1200 bred)</option><option value="0.9|2.5">Gips 900 × 2500</option><option value="1.2|2.5">Gips 1200 × 2500</option><option value="1.2|2.7">Gips 1200 × 2700</option><option value="1.2|3">Gips 1200 × 3000</option><option value="0.9|2.5">Proffs Vägg 900 × 2500</option></select></div></div>
     <div class="f"><label for="g_osb">OSB/plywood-format</label><div class="in"><select id="g_osb"><option value="1.2|2.5" selected>1200 × 2500</option><option value="1.22|2.44">1220 × 2440</option><option value="1.2|2.7">1200 × 2700</option></select></div></div>
-    <div class="f"><label for="g_skruv">Gipsskruv per m² och lager</label><div class="in"><input id="g_skruv" type="number" value="17"><span>st</span></div></div>
+    <div class="f"><label for="g_skruv">Gipsskruv per m², ytterlag</label><div class="in"><input id="g_skruv" type="number" value="17"><span>st</span></div></div>
     <div class="f"><label for="g_oskruv">Träskruv OSB per m²</label><div class="in"><input id="g_oskruv" type="number" value="15"><span>st</span></div></div>
     <div class="f"><label for="g_foglag">Fogas i</label><div class="in"><select id="g_foglag"><option value="alla" selected>Alla skivlag</option><option value="ytter">Yttersta laget</option></select></div></div>
     <div class="f"><label for="g_fogm">Fog per patron</label><div class="in"><input id="g_fogm" type="number" value="10"><span>lpm</span></div></div>
   </div></details>
   <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="g_ctx"></p><div class="rows" id="g_out"></div>
     <div class="actions"><button class="act" data-copy="g_out">Kopiera listan</button><button class="act ghost" data-share="g_out">Dela</button></div>
-    <p class="note">Skruv: Gyproc anger 12–15 st/m², XL-Bygg 20 – snittet 17 täcker kapade skivor. Reglar: regel i båda ändar med högst c/c emellan (6,4 m på c/c 450 = 16 st), samt syll och hammarband. Stående regel räknas i närmaste standardlängd över vägghöjden (2,4 / 2,7 / 3,0 / 3,6 / 4,2 / 4,8 / 5,4 m), syll och hammarband i längsta praktiska längd. Skivlängd väljs så att raderna på höjden blir så få som möjligt – 2,5 m vägg får 2500-skiva, 2,7 m får 2700. Hörn och öppningar: 2 extra reglar per hörn, dörr (9 × 21) och fönster (12 × 12), kortling 1 m per dörr och 2 × 1,3 m per fönster; öppningarnas yta dras av från skivor och skruv, avrundat till hela skivor. Andra dörr- och fönstermått – justera med spill. Fog: sträng mot golv, tak och anslutande väggar i varje skivlag (Gyproc), ca 10 lpm per 300 ml-patron vid 6 mm sträng, +10 % – brandväggar kräver godkänd brandfog och rätt antal lager enligt fabrikantens typgodkännande.</p>
+    <p class="note">Skruv: Gyproc anger 12–15 st/m², XL-Bygg 20 – snittet 17 täcker kapade skivor i ytterlaget; innerlag skruvas glesare (ca 60 %). Skruvlängd per lag efter Gyproc: 1 lag 29 mm, 2 lag 41, 3 lag 57 på trä (25/38/51 på stål), OSB under gips räknas in i tjockleken. Reglar: regel i båda ändar med högst c/c emellan (6,4 m på c/c 450 = 16 st), samt syll och hammarband. Stående regel räknas i närmaste standardlängd över vägghöjden (2,4 / 2,7 / 3,0 / 3,6 / 4,2 / 4,8 / 5,4 m), syll och hammarband i längsta praktiska längd. Skivlängd väljs så att raderna på höjden blir så få som möjligt – 2,5 m vägg får 2500-skiva, 2,7 m får 2700. Hörn och öppningar: 2 extra reglar per hörn, dörr (9 × 21) och fönster (12 × 12), kortling 1 m per dörr och 2 × 1,3 m per fönster; öppningarnas yta dras av från skivor och skruv, avrundat till hela skivor. Andra dörr- och fönstermått – justera med spill. Fog: sträng mot golv, tak och anslutande väggar i varje skivlag (Gyproc), ca 10 lpm per 300 ml-patron vid 6 mm sträng, +10 % – brandväggar kräver godkänd brandfog och rätt antal lager enligt fabrikantens typgodkännande.</p>
   </div>
 </div>
 </section>
@@ -177,6 +177,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     </select></div></div>
     <div class="f"><label for="t_yta">Takyta (båda fallen)</label><div class="in"><input id="t_yta" type="number" step="1" value="140"><span>m²</span></div></div>
     <div class="f"><label for="t_nock">Nocklängd</label><div class="in"><input id="t_nock" type="number" step="0.1" value="11"><span>m</span></div></div>
+    <div class="f" data-more><label for="t_valm">Valmlängd</label><div class="in"><input id="t_valm" type="number" step="0.1" value="0"><span>m</span></div></div>
     <div class="f" data-more><label for="t_spill">Spill</label><div class="in"><select id="t_spill"><option value="0">0 % – räkna exakt</option><option value="5" selected>5 % – enkelt sadeltak</option><option value="10">10 % – vinklar, kupor</option><option value="15">15 % – valmat tak</option><option value="20">20 % – komplext tak</option></select></div></div>
     <div class="f"><label for="t_und">Underlag</label><div class="in"><select id="t_und">
       <option value="rs" selected>Råspont + underlagspapp</option><option value="duk">Underlagsduk på läkt 45×70</option><option value="ing">Räkna inte underlag</option>
@@ -225,7 +226,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   </div>
   <div class="res"><h3>Beräknad materialåtgång</h3><p class="ctx" id="t_ctx"></p><div class="rows" id="t_out"></div>
     <div class="actions"><button class="act" data-copy="t_out">Kopiera listan</button><button class="act ghost" data-share="t_out">Dela</button></div>
-    <p class="note" id="t_note_pannor">Spill 5 % räcker på ett enkelt sadeltak; vinklar, kupor och valmar kräver 10–20 % (kapade pannor i ränndalar och mot nock). Pall = 240 pannor, halvpall 120 (vanligt för betongpannor – ändra under Förval om fabrikatet packar annorlunda). Läktavstånd sätts vid max bygglängd – brantare/flackare tak kan kräva tätare läkt (Benders: 310–375 mm beroende på lutning). Läkt 25×48 enligt nyare anvisningar.</p>
+    <p class="note" id="t_note_pannor">Valm: ange valmlängd under Fler alternativ så räknas nockpannor, nockbräda, tätning och nockskruv på nock + valm. Spill 5 % räcker på ett enkelt sadeltak; vinklar, kupor och valmar kräver 10–20 % (kapade pannor i ränndalar och mot nock). Pall = 240 pannor, halvpall 120 (vanligt för betongpannor – ändra under Förval om fabrikatet packar annorlunda). Läktavstånd sätts vid max bygglängd – brantare/flackare tak kan kräva tätare läkt (Benders: 310–375 mm beroende på lutning). Läkt 25×48 enligt nyare anvisningar.</p>
     <p class="note" id="t_note_papp" hidden>Rullens yta och täckande yta är inte samma sak: täckande = (bredd − sidöverlapp) × (längd − ändöverlapp). Välj spill efter takets form – en takläggare räknar ofta 10–20 % på vinkliga tak. Rullformat och överlapp varierar per fabrikat.</p>
   </div>
 </div>
@@ -558,8 +559,16 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       out.push(row(steel?`Stålregel ${rdim}`:`Reglar ${rdim}`,reglar,'st',`stående à ${fmt(rl)} m, c/c ${num('g_cc')}${extraReg?` inkl. ${extraReg} extra vid hörn/öppningar`:''}${skarv?' – längre än standardlängd, skarvas':''}`),
                row(steel?`Skena ${rdim.replace('R','SK')}`:`Syll + hammarband ${rdim}`,runPcs,'st',`à ${fmt(pl)} m (2 × ${fmt(L)} m)`),
                row('Regel totalt',Math.ceil(regelM),'lpm',`${reglar} × ${fmt(rl)} + ${runPcs} × ${fmt(pl)} m${kortM?` + ${fmt(Math.round(kortM*10)/10)} m kortlingar`:''}`));
-      if(gipsL)out.push(row('Gipsskruv',up(gipsArea*spm*sp,50),'st','avrundat till 50'));
-      if(osbL)out.push(row('Träskruv till OSB',up(osbArea*ospm*sp,50),'st','avrundat till 50'));
+      // Infästning per lager: varje skivlag skruvas för sig, längden efter hur tjockt paketet är under skruvskallen
+      const gT=0.0125, oT=0.012, screws={};
+      const add=(k,n)=>{screws[k]=(screws[k]||0)+n;};
+      const gLen=t=>steel?(t<=0.013?25:t<=0.026?38:t<=0.039?51:57):(t<=0.013?29:t<=0.026?41:t<=0.039?57:70);
+      for(const side of ['g_a','g_b']){
+        const ng=sel(side,0), no=sel(side,1); let stack=0;
+        if(no){stack+=oT;add(steel?'Borrskruv 4,2 × 32 (OSB på stål)':'Träskruv 4,2 × 42 (OSB)',An*ospm);}
+        for(let i=1;i<=ng;i++){stack+=gT;const outer=i===ng;add(`Gipsskruv ${gLen(stack)} mm${steel?' (stål)':''}${outer?'':' – innerlag'}`,An*(outer?spm:spm*0.6));}
+      }
+      for(const [k,n] of Object.entries(screws))out.push(row(k,up(n*sp,50),'st',k.includes('innerlag')?'glesare skruvning i innerlag, ca 60 %':'avrundat till 50'));
       const fog=document.getElementById('g_fog').value;
       if(fog){
         const per=2*L+2*H, sides=[sel('g_a',0)+sel('g_a',1),sel('g_b',0)+sel('g_b',1)].filter(n=>n>0);
@@ -572,16 +581,20 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
     tak(){
       if($('t_mode').value==='papp')return calcs.papp();
       const A=num('t_yta');if(!(A>0))return [msg('Ange takyta större än 0.')];
-      const N=num('t_nock'),bar=num('t_bar')/1000,stro=num('t_stro')/1000,pm2=num('t_pm2'),npm=num('t_npm'),lakt=num('t_lakt'),sp=1+num('t_spill')/100;
+      const N=num('t_nock')+Math.max(0,num('t_valm')),valm=Math.max(0,num('t_valm')),bar=num('t_bar')/1000,stro=num('t_stro')/1000,pm2=num('t_pm2'),npm=num('t_npm'),lakt=num('t_lakt'),sp=1+num('t_spill')/100;
       const barM=A/bar*sp, stroM=A/stro*sp;
       const pannor=Math.ceil(A*pm2*sp), pall=num('t_pall'), hel=Math.floor(pannor/pall), rest=pannor-hel*pall, halv=rest>0&&rest<=pall/2?1:0, extra=halv?0:rest;
       const pallTxt=`${hel} pall`+(halv?' + 1 halvpall':'')+(extra?` + ${extra} lösa`:'')+` (à ${pall} st)`;
-      const out=[row('Takyta',A,'m²','båda takfallen'),row('Takpannor',pannor,'st',`${fmt(pm2)} st/m² + spill`),row('Pallar',hel+(halv?0.5:0),'pall',pallTxt),row('Nockpannor',Math.ceil(N*npm*sp),'st',`${fmt(npm)} st per meter`),row($('t_und').value==='duk'?'Bärläkt 45×70':'Bärläkt 25×48',Math.ceil(barM),'lpm',`${Math.ceil(barM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_bar')}`),row($('t_und').value==='duk'?'Ströläkt 45×70':'Ströläkt 25×48',Math.ceil(stroM),'lpm',`${Math.ceil(stroM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_stro')}`),row('Nockbräda',Math.ceil(N*1.05),'lpm','')];
+      const out=[row('Takyta',A,'m²','båda takfallen'),row('Takpannor',pannor,'st',`${fmt(pm2)} st/m² + spill`),row('Pallar',hel+(halv?0.5:0),'pall',pallTxt),row('Nockpannor',Math.ceil(N*npm*sp),'st',`${fmt(npm)} st per meter${valm?`, nock ${fmt(num('t_nock'))} + valm ${fmt(valm)} m`:''}`),row($('t_und').value==='duk'?'Bärläkt 45×70':'Bärläkt 25×48',Math.ceil(barM),'lpm',`${Math.ceil(barM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_bar')}`),row($('t_und').value==='duk'?'Ströläkt 45×70':'Ströläkt 25×48',Math.ceil(stroM),'lpm',`${Math.ceil(stroM/lakt)} st à ${fmt(lakt)} m, c/c ${num('t_stro')}`),row('Nockbräda',Math.ceil(N*1.05),'lpm',valm?'nock + valm':''),row('Nock- och valmtätning',Math.ceil(N/5),'rullar',`à 5 m, ${fmt(Math.round(N*10)/10)} lpm nock${valm?' + valm':''}`),row('Nockskruv med bricka',up(N*npm*sp,25),'st','1 per nockpanna')];
       const und=$('t_und').value, lucka=num('t_lucka');
       if(und==='rs'&&lucka)out.push(row('Råspontsluckor',Math.ceil(A*sp/lucka),'st',`à ${fmt(lucka)} m² + ${num('t_spill')} % spill`));
       if(und!=='ing'){const rb=sel('t_rulle',0),rl=sel('t_rulle',1);const os=rb>1?0.15:0.10;const netto=(rb-os)*(rl-0.15);
         const rullar=Math.ceil(A*sp/netto);
-        out.push(row(und==='rs'?'Underlagspapp':'Underlagsduk',rullar,'rullar',`${fmt(rb)} × ${fmt(rl)} m = ${fmt(rb*rl)} m² rulle, täcker ${fmt(Math.round(netto*10)/10)} m² efter ${Math.round(os*1000)} mm sid- och 150 mm ändöverlapp, + ${num('t_spill')} % spill`));}
+        out.push(row(und==='rs'?'Underlagspapp':'Underlagsduk',rullar,'rullar',`${fmt(rb)} × ${fmt(rl)} m = ${fmt(rb*rl)} m² rulle, täcker ${fmt(Math.round(netto*10)/10)} m² efter ${Math.round(os*1000)} mm sid- och 150 mm ändöverlapp, + ${num('t_spill')} % spill`));
+        if(und==='rs')out.push(row('Pappspik',up(A*20,100),'st','20 st/m²'));}
+      if(und==='rs'&&lucka)out.push(row('Skruv råspontsluckor',up(Math.ceil(A*sp/lucka)*8,50),'st','ca 8 per lucka, 2 per takstol'));
+      out.push(row('Läktskruv / trådspik',up(barM/stro+stroM/1.2,100),'st','1 per korsning bärläkt–ströläkt, ströläkt i takstol c/c 1200'),
+               row('Takpannekrokar / klammer',Math.ceil(pannor*0.2/50)*50,'st','ca var femte panna: gavlar, takfot, nock och var fjärde rad – vindutsatt läge kräver mer'));
       return out;
     },
     papp(){
@@ -602,7 +615,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       if(A>0){out.push(hd('Innertak'),row('Takyta',A,'m²',''));
       if(t[0]==='skiva'){out.push(row('Skivor',Math.ceil(A*sp/+t[1]),'st',`à ${fmt(+t[1])} m² + spill`),row('Skruv',up(A*(+t[2]),50),'st',`${t[2]} st/m²`));}
       else{const lpm=A/+t[1]*sp;out.push(row('Panel',Math.ceil(lpm),'lpm',`täckbredd ${Math.round(+t[1]*1000)} mm + spill`),row('Spik / skruv',up(lpm/cc*1.5,100),'st',`1–2 per korsning, c/c ${num('it_cc')}`));}
-      out.push(row('Glespanel / reglar',Math.ceil(A/cc*1.05),'lpm',`c/c ${num('it_cc')}`));}
+      out.push(row('Glespanel / reglar',Math.ceil(A/cc*1.05),'lpm',`c/c ${num('it_cc')}`),row('Skruv glespanel',up(A/cc/1.2,100),'st','1 per takstol/bjälke c/c 1200'));}
       const g=$('go_typ').value.split('|'),gcc=num('go_cc')/1000,gsp=1+num('go_spill')/100;
       if(G>0){out.push(hd('Golv'),row('Golvyta',G,'m²',''));
       if(g[0]==='skiva'){out.push(row('Skivor',Math.ceil(G*gsp/+g[1]),'st',`à ${fmt(+g[1])} m² + spill`),row('Golvskruv',up(G*(+g[2]),50),'st',`${g[2]} st/m²`),row('Golvlim (spont)',Math.ceil(G*0.1),'l','ca 0,1 l/m²'));}
@@ -617,7 +630,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       const spikM2=b*kors*nb+l*kors*nl;
       const out=[row('Fasadyta',A,'m²','netto, öppningar avdragna'),row(l?'Bottenbräda':'Panelbräda',Math.ceil(A*b*sp),'lpm',`${fmt(b)} lpm/m² + spill`)];
       if(l)out.push(row('Lockläkt / lockbräda',Math.ceil(A*l*sp),'lpm',`${fmt(l)} lpm/m² + spill`));
-      out.push(row(st?'Spikläkt (liggande)':'Reglar / läkt (stående)',Math.ceil(A/lcc*1.05),'lpm',`c/c ${num('p_lakt')}`));
+      out.push(row(st?'Spikläkt (liggande)':'Reglar / läkt (stående)',Math.ceil(A/lcc*1.05),'lpm',`c/c ${num('p_lakt')}`),row('Läktskruv',up(A/lcc/0.6,100),'st','1 per korsning med regel c/c 600'));
       out.push(row('Spik',up(A*spikM2*1.05,100),'st',`${Math.round(spikM2)} st/m² vid c/c ${num('p_lakt')}, ${st?'stående':'liggande'} panel`));
       if(vind>10)out.push(row('Vindduk',Math.ceil(A/vind),'rullar','2,8 × 25 m, ca 65 m² netto'));
       else if(vind>0)out.push(row('Vindskyddsskiva',Math.ceil(A/vind*1.05),'st','1200 × 2700'));

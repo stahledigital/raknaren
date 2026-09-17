@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8">
-<meta name="app-version" content="mr-v17">
+<meta name="app-version" content="mr-v18">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f0643b">
@@ -174,7 +174,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   <details><summary>Förval</summary>
   <div class="grid">
     <div class="f"><label for="g_regel">Regeldimension</label><div class="in"><select id="g_regel"><option value="45×70|w" selected>Trä 45 × 70</option><option value="45×95|w">Trä 45 × 95</option><option value="45×120|w">Trä 45 × 120</option><option value="R70|s">Stålregel 70</option><option value="R95|s">Stålregel 95</option></select></div></div>
-    <div class="f"><label for="g_skiva">Skivformat</label><div class="in"><select id="g_skiva"><option value="auto" selected>Auto efter höjd (1200 bred)</option><option value="0.9|2.5">Gips 900 × 2500</option><option value="1.2|2.5">Gips 1200 × 2500</option><option value="1.2|2.7">Gips 1200 × 2700</option><option value="1.2|3">Gips 1200 × 3000</option><option value="0.9|2.5">Proffs Vägg 900 × 2500</option></select></div></div>
+    <div class="f"><label for="g_skiva">Skivformat</label><div class="in"><select id="g_skiva"><option value="auto" selected>Auto – bredd efter regelavstånd, längd efter höjd</option><option value="0.9|2.5">Gips 900 × 2500</option><option value="1.2|2.5">Gips 1200 × 2500</option><option value="1.2|2.7">Gips 1200 × 2700</option><option value="1.2|3">Gips 1200 × 3000</option><option value="0.9|2.5">Proffs Vägg 900 × 2500</option></select></div></div>
     <div class="f"><label for="g_osb">OSB/plywood-format</label><div class="in"><select id="g_osb"><option value="1.2|2.5" selected>1200 × 2500</option><option value="1.22|2.44">1220 × 2440</option><option value="1.2|2.7">1200 × 2700</option></select></div></div>
     <div class="f"><label for="g_skruv">Gipsskruv per m², ytterlag</label><div class="in"><input id="g_skruv" type="number" value="17"><span>st</span></div></div>
     <div class="f"><label for="g_oskruv">Träskruv OSB per m²</label><div class="in"><input id="g_oskruv" type="number" value="15"><span>st</span></div></div>
@@ -184,7 +184,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
   <div class="res"><h3>Beräknad materialåtgång</h3><details class="ctx"><summary>Räknat på</summary><p class="ctxp" id="g_ctx"></p></details><div class="rows" id="g_out"></div>
     <div class="actions"><button class="act add" data-add="g_out">+ Lägg till i listan</button><button class="act ghost" data-copy="g_out">Kopiera</button><button class="act ghost" data-share="g_out">Dela</button></div>
     <p class="gmo">Ska du skicka offert på det här? <a href="https://granskaminoffert.se" target="_blank" rel="noopener">Granska den innan den går iväg – gratis.</a></p>
-    <details class="notes"><summary>Om beräkningen och källorna</summary><p class="note">Skruv: Gyproc anger 12–15 st/m², XL-Bygg 20 – snittet 17 täcker kapade skivor i ytterlaget; innerlag skruvas glesare (ca 60 %). Skruvlängd per lag efter Gyproc: 1 lag 29 mm, 2 lag 41, 3 lag 57 på trä (25/38/51 på stål), OSB under gips räknas in i tjockleken. Reglar: regel i båda ändar med högst c/c emellan (6,4 m på c/c 450 = 16 st), samt syll och hammarband. Stående regel räknas i närmaste standardlängd över vägghöjden (2,4 / 2,7 / 3,0 / 3,6 / 4,2 / 4,8 / 5,4 m), syll och hammarband i längsta praktiska längd. Skivlängd väljs så att raderna på höjden blir så få som möjligt – 2,5 m vägg får 2500-skiva, 2,7 m får 2700. Hörn och öppningar: 2 extra reglar per hörn, dörr (9 × 21) och fönster (12 × 12), kortling 1 m per dörr och 2 × 1,3 m per fönster; öppningarnas yta dras av från skivor och skruv, avrundat till hela skivor. Andra dörr- och fönstermått – justera med spill. Fog: sträng mot golv, tak och anslutande väggar i varje skivlag (Gyproc), ca 10 lpm per 300 ml-patron vid 6 mm sträng, +10 % – brandväggar kräver godkänd brandfog och rätt antal lager enligt fabrikantens typgodkännande.</p></details>
+    <details class="notes"><summary>Om beräkningen och källorna</summary><p class="note">Skruv: Gyproc anger 12–15 st/m², XL-Bygg 20 – snittet 17 täcker kapade skivor i ytterlaget; innerlag skruvas glesare (ca 60 %). Skruvlängd per lag efter Gyproc: 1 lag 29 mm, 2 lag 41, 3 lag 57 på trä (25/38/51 på stål), OSB under gips räknas in i tjockleken. Reglar: regel i båda ändar med högst c/c emellan (6,4 m på c/c 450 = 16 st), samt syll och hammarband. Stående regel räknas i närmaste standardlängd över vägghöjden (2,4 / 2,7 / 3,0 / 3,6 / 4,2 / 4,8 / 5,4 m), syll och hammarband i längsta praktiska längd. Skivbredd väljs efter regelavståndet så att skivskarvarna hamnar på regel: 900 mm vid c/c 450 och 300, 1200 mm vid c/c 600 och 400. Skivlängd väljs så att raderna på höjden blir så få som möjligt – 2,5 m vägg får 2500-skiva, 2,7 m får 2700. Hörn och öppningar: 2 extra reglar per hörn, dörr (9 × 21) och fönster (12 × 12), kortling 1 m per dörr och 2 × 1,3 m per fönster; öppningarnas yta dras av från skivor och skruv, avrundat till hela skivor. Andra dörr- och fönstermått – justera med spill. Fog: sträng mot golv, tak och anslutande väggar i varje skivlag (Gyproc), ca 10 lpm per 300 ml-patron vid 6 mm sträng, +10 % – brandväggar kräver godkänd brandfog och rätt antal lager enligt fabrikantens typgodkännande.</p></details>
   </div>
 </div>
 </section>
@@ -582,7 +582,9 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
       const gipsArea=An*gipsL, osbArea=An*osbL;
       // skivor: hela rader på höjden + remsor kapade ur skivor för resten (som man beställer vid disken)
       const boards=(w,l)=>{const cols=Math.ceil(L/w-1e-9);let full=Math.floor(H/l+1e-9),rest=Math.round((H-full*l)*100)/100,extra=0,kap=0;if(full===0){full=1;kap=Math.round((l-H)*100)/100;rest=0;}else if(rest>0.01){extra=Math.ceil(cols/Math.max(1,Math.floor(l/rest+1e-9)));}return {n:cols*full+extra,cols,full,rest,extra,kap,w,l};};
-      const pickLen=(lens)=>{let best=null;for(const l of lens){const b=boards(1.2,l);const waste=b.n*1.2*l-L*H;if(!best||b.n<best.b.n||(b.n===best.b.n&&waste<best.waste))best={b,waste};}return best.b;};
+      // skivbredd efter regelavstånd så att skarvarna hamnar på regel: c/c 450 och 300 → 900, c/c 600 och 400 → 1200
+      const autoW=(cc===0.45||cc===0.3)?0.9:1.2;
+      const pickLen=(lens)=>{let best=null;for(const l of lens){const b=boards(autoW,l);const waste=b.n*autoW*l-L*H;if(!best||b.n<best.b.n||(b.n===best.b.n&&waste<best.waste))best={b,waste};}return best.b;};
       const gsv=$('g_skiva').value; const gb=gsv==='auto'?pickLen([2.5,2.7,3]):(()=>{const [w,l]=gsv.split('|').map(Number);return boards(w,l);})();
       const [ow,ol]=$('g_osb').value.split('|').map(Number), ob=boards(ow,ol);
       const bTxt=b=>`${b.cols*b.full} hela${b.kap>0.01?`, kapas ${fmt(b.kap)} m`:''}${b.rest>0.01?` + ${b.extra} till remsor à ${fmt(b.rest)} m`:''}`;

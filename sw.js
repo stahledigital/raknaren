@@ -1,6 +1,6 @@
 /* Materialräknaren – service worker. Cache-first för appens egna filer,
    nätverk-först för själva sidan så nya versioner når fram när man är online. */
-const VERSION = "mr-v19";
+const VERSION = "mr-v20";
 const SHELL = [
   "/",
   "/index.html",
@@ -20,6 +20,25 @@ self.addEventListener("activate", (e) => {
   );
 });
 
+async function pageResponse(req) {
+  const cached = caches.match(req).then((hit) => hit || caches.match("/index.html"));
+  const network = fetch(req).then((res) => {
+    const copy = res.clone();
+    caches.open(VERSION).then((c) => c.put(req, copy));
+    return res;
+  });
+  try {
+    return await Promise.race([
+      network,
+      new Promise((_, reject) => setTimeout(() => reject(new Error("langsamt nat")), 2500)),
+    ]);
+  } catch (err) {
+    const hit = await cached;
+    if (hit) return hit;
+    try { return await network; } catch (e2) { return Response.error(); }
+  }
+}
+
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
@@ -30,11 +49,9 @@ self.addEventListener("fetch", (e) => {
   if (!isPage && !isFont && !isShell) return;
 
   if (isPage) {
-    // nätverk först, fall tillbaka på cache offline
-    e.respondWith(
-      fetch(req).then((res) => { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); return res; })
-        .catch(() => caches.match(req))
-    );
+    // Nätverk först, men ge upp efter 2,5 s och visa den sparade sidan i stället.
+    // Utan tidsgräns kan appen stå och ladda vitt på dålig täckning fast sidan finns i telefonen.
+    e.respondWith(pageResponse(req));
     return;
   }
   // cache först för ikoner, manifest och typsnitt

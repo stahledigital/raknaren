@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8">
-<meta name="app-version" content="mr-v20">
+<meta name="app-version" content="mr-v21">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f0643b">
@@ -29,6 +29,8 @@
 <meta name="twitter:title" content="Materialräknaren – Ståhle Digital">
 <meta name="twitter:description" content="Räkna material för gips, tak, papp, panel, färg, betong, fyllnad, trall och isolering – direkt i mobilen. Gratis.">
 <meta name="twitter:image" content="https://raknaren.stahledigital.se/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
 <style>
 /* Ståhle Digital-palett – sajten är alltid ljus */
@@ -139,20 +141,20 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <nav role="tablist" id="tabs">
-  <button role="tab" aria-selected="true" data-t="gips">Innervägg</button>
-  <button role="tab" data-t="yv">Yttervägg</button>
-  <button role="tab" data-t="tak">Tak</button>
-  <button role="tab" data-t="panel">Fasadpanel</button>
-  <button role="tab" data-t="farg">Färg</button>
-  <button role="tab" data-t="platta">Betong</button>
-  <button role="tab" data-t="fyll">Fyllnad</button>
-  <button role="tab" data-t="trall">Trall</button>
-  <button role="tab" data-t="iso">Isolering</button>
-  <button role="tab" data-t="inne">Innertak &amp; golv</button>
+  <button role="tab" aria-selected="true" data-t="gips" id="tab_gips" aria-controls="gips" tabindex="0">Innervägg</button>
+  <button role="tab" data-t="yv" id="tab_yv" aria-controls="yv" tabindex="-1">Yttervägg</button>
+  <button role="tab" data-t="tak" id="tab_tak" aria-controls="tak" tabindex="-1">Tak</button>
+  <button role="tab" data-t="panel" id="tab_panel" aria-controls="panel" tabindex="-1">Fasadpanel</button>
+  <button role="tab" data-t="farg" id="tab_farg" aria-controls="farg" tabindex="-1">Färg</button>
+  <button role="tab" data-t="platta" id="tab_platta" aria-controls="platta" tabindex="-1">Betong</button>
+  <button role="tab" data-t="fyll" id="tab_fyll" aria-controls="fyll" tabindex="-1">Fyllnad</button>
+  <button role="tab" data-t="trall" id="tab_trall" aria-controls="trall" tabindex="-1">Trall</button>
+  <button role="tab" data-t="iso" id="tab_iso" aria-controls="iso" tabindex="-1">Isolering</button>
+  <button role="tab" data-t="inne" id="tab_inne" aria-controls="inne" tabindex="-1">Innertak &amp; golv</button>
 </nav>
 
 <!-- GIPS -->
-<section id="gips" data-active>
+<section id="gips" role="tabpanel" aria-labelledby="tab_gips" data-active>
 <div class="calc">
   <h2>Innervägg</h2>
   <p class="lead">Skivor, reglar, skruv, spackel och fog för en regelvägg. Välj uppbyggnad per sida – gips 12,5, brandgips 15, våtrumsskiva, OSB/plywood eller kombination – och akustik- eller brandfog för ljud- och brandväggar. Skiv- och regellängd väljs efter vägghöjden och står i listan. Vägg med hörn: ange total längd och antal hörn under Fler alternativ, liksom dörrar och fönster.</p>
@@ -195,7 +197,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- YTTERVÄGG -->
-<section id="yv">
+<section id="yv" role="tabpanel" aria-labelledby="tab_yv">
 <div class="calc">
   <h2>Yttervägg</h2>
   <p class="lead">Stommen och alla skikt bakom fasaden: reglar, vindskydd, isolering, ångspärr, installationsregel och invändig skiva. Panelen räknas under Fasadpanel. Uppbyggnad enligt TräGuiden, åtgångstal från leverantörernas anvisningar.</p>
@@ -238,7 +240,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- TAK -->
-<section id="tak">
+<section id="tak" role="tabpanel" aria-labelledby="tab_tak">
 <div class="calc">
   <h2>Tak</h2>
   <p class="lead">Pannor, nock, läkt, råspont och underlag – eller papp och duk med överlappet inräknat. Välj taktäckning först.</p>
@@ -315,7 +317,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- YTTERPANEL -->
-<section id="panel">
+<section id="panel" role="tabpanel" aria-labelledby="tab_panel">
 <div class="calc">
   <h2>Fasadpanel &amp; vindduk</h2>
   <p class="lead">Panel, spikläkt, spik och vindskydd för en fasad. Ange nettoyta (fönster och dörrar avdragna).</p>
@@ -348,7 +350,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- FÄRG -->
-<section id="farg">
+<section id="farg" role="tabpanel" aria-labelledby="tab_farg">
 <div class="calc">
   <h2>Färg</h2>
   <p class="lead">Liter färg för väggar inne eller fasad ute.</p>
@@ -374,7 +376,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- PLATTA -->
-<section id="platta">
+<section id="platta" role="tabpanel" aria-labelledby="tab_platta">
 <div class="calc">
   <h2>Betong</h2>
   <p class="lead">Platta på mark med nät och cellplast – och plintar i rör eller form.</p>
@@ -408,7 +410,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- FYLLNAD -->
-<section id="fyll">
+<section id="fyll" role="tabpanel" aria-labelledby="tab_fyll">
 <div class="calc">
   <h2>Fyllnadsmassor</h2>
   <p class="lead">Makadam, bergkross, sand och stenmjöl i kubik, ton och storsäck.</p>
@@ -438,7 +440,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- TRALL -->
-<section id="trall">
+<section id="trall" role="tabpanel" aria-labelledby="tab_trall">
 <div class="calc">
   <h2>Trall</h2>
   <p class="lead">Löpmeter trall, reglar och skruv för ett däck.</p>
@@ -459,7 +461,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- ISOLERING -->
-<section id="iso">
+<section id="iso" role="tabpanel" aria-labelledby="tab_iso">
 <div class="calc">
   <h2>Isolering</h2>
   <p class="lead">Regelskivor i vägg och bjälklag, samt lösull på vinden.</p>
@@ -488,7 +490,7 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 </section>
 
 <!-- INNERTAK & GOLV -->
-<section id="inne">
+<section id="inne" role="tabpanel" aria-labelledby="tab_inne">
 <div class="calc">
   <h2>Innertak &amp; golv</h2>
   <p class="lead">Skivor eller panel i innertak, och skivor eller brädor på golv. Förvalen är vanliga format – kontrollera mot etiketten.</p>
@@ -867,13 +869,26 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
 
   const tabs=$('tabs');
   function activate(id,push){
+    if(!/^[a-z]+$/.test(id))return;
     const b=tabs.querySelector(`button[data-t="${id}"]`);if(!b)return;
-    tabs.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b));
+    tabs.querySelectorAll('button').forEach(x=>{x.setAttribute('aria-selected',x===b);x.tabIndex=x===b?0:-1;});
     document.querySelectorAll('section:not(#lista)').forEach(s=>s.toggleAttribute('data-active',s.id===id));
     renderOne(id);
     if(push){try{history.replaceState(null,'','#'+id);}catch(e){}}
   }
   tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)activate(b.dataset.t,true);});
+  // Piltangenter i fliklistan, som skärmläsare och tangentbord förväntar sig.
+  tabs.addEventListener('keydown',e=>{
+    const knappar=[...tabs.querySelectorAll('button')];
+    const i=knappar.indexOf(document.activeElement); if(i<0)return;
+    let j=null;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%knappar.length;
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i-1+knappar.length)%knappar.length;
+    else if(e.key==='Home')j=0;
+    else if(e.key==='End')j=knappar.length-1;
+    if(j===null)return;
+    e.preventDefault();activate(knappar[j].dataset.t,true);knappar[j].focus();
+  });
   window.addEventListener('hashchange',()=>activate(location.hash.slice(1),false));
   if(location.hash.length>1)activate(location.hash.slice(1),false);
 
@@ -887,11 +902,13 @@ footer{margin-top:20px;font-size:12px;color:var(--ink2);display:flex;justify-con
         rows.push({hd,k:el.firstChild.textContent.trim(),v:isNaN(n)?0:n,u:v.querySelector('u').textContent,sub:sm?sm.textContent:''});}
     }return rows;}
   let lista=[];try{lista=JSON.parse(localStorage.getItem(LKEY)||'[]');if(!Array.isArray(lista))lista=[];}catch(e){lista=[];}
-  function saveLista(){try{localStorage.setItem(LKEY,JSON.stringify(lista));}catch(e){}}
+  function saveLista(){try{localStorage.setItem(LKEY,JSON.stringify(lista));return true;}catch(e){return false;}}
   function shortCtx(sec){const f=[...sec.querySelectorAll('.f')].filter(f=>!f.closest('[hidden]')&&!f.closest('details')).slice(0,4);
     return f.map(x=>{const el=x.querySelector('select,input');if(!el)return '';let v=el.tagName==='SELECT'?(el.selectedOptions[0]?el.selectedOptions[0].textContent.trim():''):(el.value===''||isNaN(pnum(el.value))?'–':fmt(pnum(el.value)));const u=x.querySelector('.in span');if(el.tagName!=='SELECT'&&u)v+=' '+u.textContent.trim();return v;}).filter(Boolean).join(' · ');}
   function addToLista(id){const sec=$(id).closest('section');const rows=readRows(id);if(!rows.length){say('Inget att lägga till');return;}
-    lista.push({id:Date.now(),title:sec.querySelector('h2').textContent,short:shortCtx(sec),ctx:ctxOf(sec),rows});saveLista();renderLista();say(`Tillagt – ${lista.length} ${lista.length===1?'del':'delar'} i listan`);}
+    lista.push({id:Date.now(),title:sec.querySelector('h2').textContent,short:shortCtx(sec),ctx:ctxOf(sec),rows});
+    const sparat=saveLista();renderLista();
+    say(sparat?`Tillagt – ${lista.length} ${lista.length===1?'del':'delar'} i listan`:'Tillagt, men listan kunde inte sparas i telefonen');}
   function renderLista(){const box=$('lista');if(!lista.length){box.hidden=true;return;}box.hidden=false;
     $('li_n').textContent=`· ${lista.length} ${lista.length===1?'del':'delar'}`;
     const sum=new Map();for(const part of lista)for(const r of part.rows){const key=r.k+'|'+r.u;const e=sum.get(key)||{k:r.k,u:r.u,v:0,n:0};e.v+=r.v;e.n++;sum.set(key,e);}

@@ -2,6 +2,13 @@
 
 Versionsmarkör: `mr-vNN` i `sw.js` (`VERSION`) och `<meta name="app-version">` i `index.html`. Live-version verifieras mot https://raknaren.stahledigital.se/sw.js.
 
+## mr-v21 – 2026-09-18
+Tillgänglighet och småfix, samma granskningsrond som v20.
+- **Flikarna fungerar för tangentbord och skärmläsare.** De hade `role="tab"` men inga paneler att peka på: nu `aria-controls` på varje knapp, `role="tabpanel"` + `aria-labelledby` på varje sektion, en enda flik i tabbordningen och piltangenter (vänster/höger/upp/ner, Home, End) som byter flik.
+- En trasig `#hash` i adressen kan inte längre kasta ett fel i konsolen.
+- `preconnect` till Google Fonts – första ritningen väntar inte på DNS och TLS mot två nya värdar.
+- Misslyckas sparningen av materiallistan (full kvot, privat läge) säger appen det i stället för att låtsas att den sparat.
+
 ## mr-v20 – 2026-09-18
 Buggrond efter kodgranskning (`Claude outputs/donatello/KODGRANSKNING_2026-09-18.md`). Inga nya kalkyler – frysen gäller.
 - **Tomt fält gav ∞ i resultatet.** Åtta nämnare läste `num()` som ger 0 för tomt fält: bärläkt- och ströläktavstånd, läktlängd, pannor per pall, färgens täckning och burkstorlek, liter per betongsäck, kg per storsäck och m² per isoleringspaket. Nu faller de tillbaka på förvalet medan man skriver (`pos()`), och `fmt()` skriver `–` i stället för ∞ om något ändå blir oändligt. Verifierat med ett svep som tömmer varje fält i varje flik, ett i taget och alla samtidigt: 8 träffar före, 0 efter.

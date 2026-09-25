@@ -1,8 +1,8 @@
 # Materialräknaren – ändringslogg (historisk)
 
-> **Historisk, slutar vid mr-v21 (2026-09-18).** Appen flyttade till stahledigital.se/verkstaden/materialraknaren. Senare versioner (mr-v22 och framåt, live mr-v26 sedan 2026-09-21) finns i sajtrepots historik: `git log -- app/verkstaden/materialraknaren/` i `site-cloudflare`, och releaserna i `Administration/Projektstyrning/PRODUCTION_CONTROL_BASELINE.md`. Den här filen uppdateras inte längre.
+> **Historisk, slutar vid mr-v21 (2026-09-18).** Appen flyttade till stahledigital.se/verkstaden/materialraknaren. Senare versioner (mr-v22 och framåt, live mr-v27 sedan 2026-09-25 (Mätning v1)) finns i sajtrepots historik: `git log -- app/verkstaden/materialraknaren/` i `site-cloudflare`, och releaserna i `Administration/Projektstyrning/PRODUCTION_CONTROL_BASELINE.md`. Den här filen uppdateras inte längre.
 
-Versionsmarkör: `mr-vNN` i `sw.js` (`VERSION`) och `<meta name="app-version">` i `index.html`. Live-version verifieras mot https://raknaren.stahledigital.se/sw.js.
+Versionsmarkör: `mr-vNN` i `sw.js` (`VERSION`) och `<meta name="app-version">` i `index.html`. Live-version verifieras mot https://stahledigital.se/verkstaden/sw.js (raknaren.stahledigital.se är sedan 2026-09-18 bara en flyttskylt).
 
 ## mr-v21 – 2026-09-18
 Tillgänglighet och småfix, samma granskningsrond som v20.
